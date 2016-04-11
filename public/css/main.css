@@ -1,0 +1,48 @@
+body {
+  background-color: #FFFEC6;
+  color: #4D4D4D;
+  font-family: Garamond;
+}
+#navButtons {
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: black 2px 2px;
+}
+#stemsLogo {
+  padding-left: 10px;
+  font-size: 5rem;
+  color: white;
+  text-shadow: black 2px 2px;
+  font-family: Cinzel;
+}
+#deleteIcon {
+  margin-left: 10px;
+}
+#rowSpacing {
+  margin-top: 10px;
+}
+#boldText {
+  font-weight: bold;
+}
+.backgroundImage {
+  background-image: url(image/threebudshangingout.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.borderBoxes {
+  background-color: #FFFEC6;
+  opacity: 0.5;
+  width: 75%;
+  height: auto;
+  margin: auto;
+}
+.textStyle {
+  color: #4D4D4D;
+}
+.notesContainer {
+  border: 2px solid #4D4D4D;
+  border-radius: 10px;
+  padding: 5px;
+  height: auto;
+  width: 100%;
+}

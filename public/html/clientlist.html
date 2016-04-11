@@ -1,0 +1,90 @@
+<!-- CLIENTS UI VIEW -->
+<h3>Client List</h3>
+
+<!-- ======================== -->
+<!-- =====Modal trigger=====  -->
+<!-- ======================== -->
+<a class="waves-effect waves-light btn modal-trigger deep-orange lighten-1" href="#modal1">+ Add New Client</a>
+
+<!-- ========================= -->
+<!-- New client modal content  -->
+<!-- ========================= -->
+<form class="col s12" ng-submit="mainCtrl.createNewClient()">
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>New Client</h4>
+      <div class="row">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate" ng-model="mainCtrl.newClient.firstName">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate" ng-model="mainCtrl.newClient.lastName">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="email" type="email" class="validate" ng-model="mainCtrl.newClient.email">
+            <label for="email">Email</label>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="icon_telephone" type="tel" class="validate" ng-model="mainCtrl.newClient.phoneNumber">
+              <label for="icon_telephone">Phone Number</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="street_address" type="text" class="validate" ng-model="mainCtrl.newClient.address">
+            <label for="street_address">Street Address</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="disabled" type="text" class="validate" ng-model="mainCtrl.newClient.city">
+            <label for="disabled">City</label>
+          </div>
+        </div>
+        <div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.state">
+              <label for="password">State</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.zipCode">
+              <label for="password">Zip Code</label>
+            </div>
+            <div>
+              <div class="input-field col s6">
+                <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.zipCode">
+                <label for="password">Door Code</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" name="button" class=" modal-action modal-close waves-effect waves-green btn-flat deep-orange lighten-1">Submit</button>
+    </div>
+  </div>
+</form>
+
+<!-- ===================== -->
+<!-- Client List ng-repeat -->
+<!-- ===================== -->
+<div class="collection">
+  <a ng-repeat="c in mainCtrl.clientsArray | orderBy : 'lastName'" href="#/clients/{{c.lastName}}" class="collection-item active">{{c.firstName}} {{c.lastName}}</a>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+</script>

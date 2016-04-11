@@ -8,5 +8,15 @@
     "start": "node server.js"
   },
   "author": "bill-weiler",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "location": "0.0.1",
+    "mongoose": "^4.4.12",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "port": "^0.8.1"
+  }
 }

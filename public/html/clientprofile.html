@@ -1,0 +1,393 @@
+<!-- CLIENT PROFILE UI VIEW -->
+
+<div class="textStyle" ng-init="mainCtrl.getClient()">
+</div>
+<div class="row">
+  <h2>{{mainCtrl.client.firstName}} {{mainCtrl.client.lastName}}<a href="#/clients" ng-click="mainCtrl.removeClient()"><i  class="material-icons red-text" id="deleteIcon">delete</i></a></h2>
+
+  <!-- ============================== -->
+  <!-- Edit information modal trigger -->
+  <!-- ============================== -->
+  <a class="waves-effect waves-light btn modal-trigger deep-orange lighten-1 black-text" href="#modal3">Edit</a>
+
+  <!-- ========================== -->
+  <!-- Green Sheet modal trigger  -->
+  <!-- ========================== -->
+  <a class="waves-effect waves-light btn modal-trigger lime accent-4 black-text" href="#modal2">+ Green Sheet</a>
+
+  <!-- ========================= -->
+  <!-- Page content: Client info -->
+  <!-- ========================= -->
+  <div class="row" id="rowSpacing">
+    <div class="col s6">
+      <i class="material-icons prefix">email</i>
+      <h6>Address: {{mainCtrl.client.address}} {{mainCtrl.client.city}}, {{mainCtrl.client.state}} {{mainCtrl.client.zipCode}}</h6>
+    </div>
+    <div class="col s6">
+      <i class="material-icons prefix">email</i>
+      <h6>Phone: {{mainCtrl.client.phoneNumber}}</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6">
+      <i class="material-icons prefix">account_circle</i>
+      <h6>Email: {{mainCtrl.client.email}}</h6>
+    </div>
+    <div class="col s6">
+      <i class="material-icons prefix">phone</i>
+      <h6>Door Code: {{mainCtrl.client.doorCode}}</h6>
+    </div>
+  </div>
+
+  <!-- ========= Property notes ========= -->
+  <div class="row">
+    <div class="col s12">
+      <div class="notesContainer">
+        <h5>Property Notes:</h5>
+        <div class="propNoteStyle">
+          <ul class="collection">
+            <li class="collection-item" ng-repeat="n in mainCtrl.client.notes">{{n}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <form class="col s12" ng-submit="mainCtrl.addNote()">
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" ng-model="mainCtrl.newPropertyNote"></textarea>
+          <label for="textarea1">New Property Note</label>
+          <button class="btn-tiny waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <form class="col s12" ng-submit="mainCtrl.newToDo()">
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" ng-model="mainCtrl.newToDoItem"></textarea>
+          <label for="textarea1">New To-Do</label>
+          <button class="btn-tiny waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<!-- ======================== -->
+<!-- ==End of Page Content==  -->
+<!-- ======================== -->
+
+<!-- ======================== -->
+<!-- Edit client info modal   -->
+<!-- ======================== -->
+<form class="col s12" ng-submit="mainCtrl.editClient()">
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Edit Info</h4>
+      <div class="row">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate" ng-model="mainCtrl.client.firstName">
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate" ng-model="mainCtrl.client.lastName">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="email" type="email" class="validate" ng-model="mainCtrl.client.email">
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="icon_telephone" type="tel" class="validate" ng-model="mainCtrl.client.phoneNumber">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="street_address" type="text" class="validate" ng-model="mainCtrl.client.address">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="disabled" type="text" class="validate" ng-model="mainCtrl.client.city">
+          </div>
+        </div>
+        <div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="password" type="text" class="validate" ng-model="mainCtrl.client.state">
+            </div>
+            <div class="input-field col s6">
+              <input id="password" type="text" class="validate" ng-model="mainCtrl.client.zipCode">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" name="button" class=" modal-action modal-close waves-effect waves-green btn-flat deep-orange lighten-1">Submit</button>
+    </div>
+  </div>
+</form>
+
+<!-- ========================= -->
+<!-- Green sheet modal content -->
+<!-- ========================= -->
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4 style="color: #8BDAD8;">Green Sheet</h4>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="date" type="text" class="validate">
+            <label for="date" placeholder="Date">Date</label>
+          </div>
+          <div class="input-field col s4">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Begin Time</label>
+          </div>
+          <div class="row">
+            <div class="input-field col s4">
+              <input id="disabled" type="text" class="validate">
+              <label for="disabled">End Time</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Team</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">Walk-Through Start</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Walk-Through End</label>
+          </div>
+        </div>
+        <div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="disabled" type="text" class="validate">
+              <label for="disabled">Trash Amount</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Front Bed Notes</label>
+          </div>
+        </div>
+        <!-- ======================== -->
+        <!-- Front Bed Dropdown -->
+        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
+        <!-- ======================== -->
+        <div class="input-field col s12 browser-default">
+          <select multiple>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Weeded</option>
+            <option value="2">Cultivate</option>
+            <option value="3">Dead Head</option>
+            <option value="3">Insecticide</option>
+            <option value="3">Fertilize</option>
+            <option value="3">Trim</option>
+            <option value="3">Edge</option>
+            <option value="3">Sweep/Blow</option>
+            <option value="3">Look up</option>
+          </select>
+          <label>ACTION: Front Bed</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Back Bed Notes</label>
+          </div>
+        </div>
+        <!-- ======================== -->
+        <!-- Back Bed Dropdown -->
+        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
+        <!-- ======================== -->
+        <div class="input-field col s12 browser-default">
+          <select multiple>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Weeded</option>
+            <option value="2">Cultivate</option>
+            <option value="3">Dead Head</option>
+            <option value="3">Insecticide</option>
+            <option value="3">Fertilize</option>
+            <option value="3">Trim</option>
+            <option value="3">Edge</option>
+            <option value="3">Sweep/Blow</option>
+            <option value="3">Look up</option>
+          </select>
+          <label>ACTION: Back Bed</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Side Bed Notes</label>
+          </div>
+        </div>
+        <!-- ======================== -->
+        <!-- Side Bed Dropdown -->
+        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
+        <!-- ======================== -->
+        <div class="input-field col s12 browser-default">
+          <select multiple>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Weeded</option>
+            <option value="2">Cultivate</option>
+            <option value="3">Dead Head</option>
+            <option value="3">Insecticide</option>
+            <option value="3">Fertilize</option>
+            <option value="3">Trim</option>
+            <option value="3">Edge</option>
+            <option value="3">Sweep/Blow</option>
+            <option value="3">Look up</option>
+          </select>
+          <label>ACTION: Side Bed</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Annuals Notes</label>
+          </div>
+        </div>
+        <!-- ======================== -->
+        <!-- Annuals Dropdown -->
+        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
+        <!-- ======================== -->
+        <div class="input-field col s12 browser-default">
+          <select multiple>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Weeded</option>
+            <option value="2">Cultivate</option>
+            <option value="3">Dead Head</option>
+            <option value="3">Insecticide</option>
+            <option value="3">Fertilize</option>
+            <option value="3">Trim</option>
+            <option value="3">Edge</option>
+            <option value="3">Sweep/Blow</option>
+            <option value="3">Look up</option>
+          </select>
+          <label>ACTION: Annuals</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Tree/Shrub Notes</label>
+          </div>
+        </div>
+        <!-- ======================== -->
+        <!-- Trees/Shrubs Dropdown -->
+        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
+        <!-- ======================== -->
+        <div class="input-field col s12 browser-default">
+          <select multiple>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Weeded</option>
+            <option value="2">Cultivate</option>
+            <option value="3">Dead Head</option>
+            <option value="3">Insecticide</option>
+            <option value="3">Fertilize</option>
+            <option value="3">Trim</option>
+            <option value="3">Edge</option>
+            <option value="3">Sweep/Blow</option>
+            <option value="3">Look up</option>
+          </select>
+          <label>ACTION: Trees/Shrubs</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Focus this trip</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">To-Do</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Client Questions</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Special Notes</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Materials Used</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">Sprinkler/Irrigation</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="text" class="validate">
+            <label for="email">"Oh, that would look so much better" ideas!</label>
+          </div>
+        </div>
+        <!-- ======================== -->
+        <!-- Picture worthy Dropdown -->
+        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
+        <!-- ======================== -->
+        <div class="input-field col s12 browser-default">
+          <select multiple>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Yes</option>
+            <option value="2">Not yet</option>
+          </select>
+          <label>Picture Worthy?</label>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat deep-orange lighten-1">Submit</a>
+  </div>
+</div>
+<!-- ======================== -->
+<!-- End of Modal Content -->
+<!-- ======================== -->
+
+
+
+<!-- ======================== -->
+<!-- JQuery for Modal -->
+<!-- ======================== -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+  // Initialize the select dropdown
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
