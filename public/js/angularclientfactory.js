@@ -25,17 +25,17 @@
       return $http.get(apiUrl + '/' + id)
     }
 
-    clientData.destroy = function(id){
-      console.log('deleting client')
-      return = $http.delete(apiUrl + '/' + id)
-    }
-
     clientData.update = function(id, client){
       console.log('updating client information')
       return = $http.put(apiUrl + '/' + id, client)
     }
+
+    clientData.destroy = function(id){
+      console.log('deleting client')
+      return = $http.delete(apiUrl + '/' + id)
+    }
     return clientData
-    
+
   } //end of cllientFactory
 
 }()); //end of iife

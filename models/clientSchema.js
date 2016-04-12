@@ -10,7 +10,6 @@ var mongoose      = require('mongoose'),
       state       = String,
       zipCode     = Number,
       doorCode    = Number,
-      notes       = []
     })
 
 module.exports = {Client: mongoose.model('Client', clientSchema)}

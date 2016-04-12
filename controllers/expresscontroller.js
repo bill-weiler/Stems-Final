@@ -2,53 +2,60 @@ var db = require('../controllers/expresscontroller')
 
 module.exports = {
   clientController: {
+
     getAll: function(req, res) {
       db.Client.find({}, function(err, clients) {
         if (err) {
           res.json(err)
         } else {
+          console.log('Getting all clients')
           res.json(clients)
         }
       })
+    },
+
+    getSingleClient: function (req, res) {
+      db.Client.findOne({_id: req.params.id}, function (err, client) {
+        if (err) {
+          res.json(err)
+        } else {
+          console.log('Getting a single client')
+          res.json(client)
+        }
+      })
+    },
+
+    createNewClient: function (req, res) {
+      var client = new db.Client(req.body)
+      client.save(function (err, client) {
+        if (err) res.json(err)
+        console.log('Adding a new client')
+        res.json(client)
+      })
+    },
+
+    update: function (req, res) {
+      db.Client.findOne({_id: req.params.id}, function (err, client) {
+        if (req.body.firstName)   {client.firstName = req.body.firstName}
+        if (req.body.lastName)    {client.lastName = req.body.lastName}
+        if (req.body.phoneNumber) {client.phoneNumber = req.body.phoneNumber}
+        if (req.body.email)       {client.email = req.body.email}
+        if (req.body.address)     {client.address = req.body.address}
+        if (req.body.city)        {client.city = req.body.city}
+        if (req.body.state)       {client.state = req.body.state}
+        if (req.body.zipCode)     {client.zipCode = req.body.zipCode}
+        if (req.body.doorCode)    {client.doorCode = req.body.doorCode}
+        rest.save(function (err, c) {
+          res.json(c)
+        })
+      })
+    },
+
+    destroy: function (req, res) {
+      db.Client.remove({_id: req.params.id}, function(err){
+        if (err) res.json(err)
+        res.json({message: "Deleted client!"})
+      })
     }
-    // getSingle: function (req, res) {
-    //   var id = req.params.id
-    //
-    //   db.Restaurant.findOne({_id: id}, function (err, rest) {
-    //     if (err) {
-    //       res.json(err)
-    //     } else {
-    //       console.log('Getting a single Restaurant')
-    //       res.json(rest)
-    //     }
-    //   })
-    // },
-    // update: function (req, res) {
-    //   var id = req.params.id
-    //   db.Restaurant.findOne({_id: id}, function (err, rest) {
-    //     if (req.body.name) { rest.name = req.body.name}
-    //     if (req.body.rating) { rest.rating = req.body.rating}
-    //     rest.save(function (err, r) {
-    //       res.json(r)
-    //     })
-    //   })
-    // },
-    // create: function (req, res) {
-    //   console.log('coming from postman:', req.body)
-    //   var restaurant = new db.Restaurant(req.body)
-    //   restaurant.save(function (err, rest) {
-    //     if (err) res.json(err)
-    //     console.log('Restaurant Created!!')
-    //     console.log('details: %s', restaurant)
-    //     res.json(rest)
-    //   })
-    // },
-    // destroy: function (req, res) {
-    //   var id = req.params.id
-    //   db.Restaurant.findOne({_id: id}, function(err){
-    //     if (err) res.json(err)
-    //     res.json({message: "Deleted restaurant!"})
-    //   })
-    // }
   }
 }

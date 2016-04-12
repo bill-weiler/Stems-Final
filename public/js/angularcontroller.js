@@ -36,15 +36,14 @@ mainCtrl.propertyNoteArray = []
 //==============Controller Functions===============\\
 //=================================================\\
 
+mainCtrl.signIn = function(){
+  $location.path('/clients')
+}
 
 mainCtrl.getSingleClient = function(){
   var search = $stateParams.lname
   var pos = mainCtrl.clientsArray.map(function(e) {return e.lastName }).indexOf(search)
   mainCtrl.client = mainCtrl.clientsArray[pos]
-}
-
-mainCtrl.signIn = function(){
-  $location.path('/clients')
 }
 
 mainCtrl.createNewClient = function(){
