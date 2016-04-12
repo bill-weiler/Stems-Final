@@ -3,17 +3,17 @@
 <div class="textStyle" ng-init="mainCtrl.getClient()">
 </div>
 <div class="row">
-  <h2>{{mainCtrl.client.firstName}} {{mainCtrl.client.lastName}}<a href="#/clients" ng-click="mainCtrl.removeClient()"><i  class="material-icons red-text" id="deleteIcon">delete</i></a></h2>
+  <h2>{{mainCtrl.client.firstName}} {{mainCtrl.client.lastName}}<a href="#/clients" ng-click="mainCtrl.removeClient()"><i  class="material-icons black-text" id="deleteIcon">delete</i></a></h2>
 
   <!-- ============================== -->
   <!-- Edit information modal trigger -->
   <!-- ============================== -->
-  <a class="waves-effect waves-light btn modal-trigger deep-orange lighten-1 black-text" href="#modal3">Edit</a>
+  <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal3">Edit</a>
 
   <!-- ========================== -->
   <!-- Green Sheet modal trigger  -->
   <!-- ========================== -->
-  <a class="waves-effect waves-light btn modal-trigger lime accent-4 black-text" href="#modal2">+ Green Sheet</a>
+  <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal2">+ Green Sheet</a>
 
   <!-- ========================= -->
   <!-- Page content: Client info -->
@@ -133,7 +133,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" name="button" class=" modal-action modal-close waves-effect waves-green btn-flat deep-orange lighten-1">Submit</button>
+      <button type="submit" name="button" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">Submit</button>
     </div>
   </div>
 </form>
@@ -143,7 +143,7 @@
 <!-- ========================= -->
 <div id="modal2" class="modal">
   <div class="modal-content">
-    <h4 style="color: #8BDAD8;">Green Sheet</h4>
+    <h4 class="black-text">Green Sheet</h4>
     <div class="row">
       <form class="col s12">
         <div class="row">
@@ -369,7 +369,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat deep-orange lighten-1">Submit</a>
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">Submit</a>
   </div>
 </div>
 <!-- ======================== -->

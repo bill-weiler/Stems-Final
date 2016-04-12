@@ -1,19 +1,21 @@
 body {
-  background-color: #FFFEC6;
-  color: #4D4D4D;
-  font-family: Garamond;
+  background-image: url(image/barnimages_pisa_09.jpg);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*font-family: Lido;*/
 }
 #navButtons {
   font-size: 1.5rem;
-  color: white;
-  text-shadow: black 2px 2px;
+  color: #FDF5E6;
 }
 #stemsLogo {
   padding-left: 10px;
   font-size: 5rem;
-  color: white;
-  text-shadow: black 2px 2px;
-  font-family: Cinzel;
+  color: #FDF5E6;
 }
 #deleteIcon {
   margin-left: 10px;
@@ -24,10 +26,8 @@ body {
 #boldText {
   font-weight: bold;
 }
-.backgroundImage {
-  background-image: url(image/threebudshangingout.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+#backgroundContainer {
+  background-color: rgba(253,245,230, 0.85)
 }
 .borderBoxes {
   background-color: #FFFEC6;

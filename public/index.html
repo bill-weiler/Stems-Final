@@ -16,35 +16,37 @@
 </head>
 
 
-<body ng-controller="MainController as mainCtrl">
-      <nav id="navBar" class="backgroundImage">
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo" id="stemsLogo">Stems</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a id="navButtons" ui-sref="home">Home</a></li>
-            <li><a id="navButtons" ui-sref="todo">To-Do List</a></li>
-            <li><a id="navButtons" ui-sref="signin">Sign In</a></li>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li><a ui-sref="home">Home</a></li>
-            <li><a ui-sref="todo">To-Do List</a></li>
-            <li><a ui-sref="signin">Sign In</a></li>
-          </ul>
-        </div>
-      </nav>
+<body ng-controller="MainController as mainCtrl" class="backgroundImage">
+  <nav id="navBar" class="black">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo" id="stemsLogo">Stems</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a id="navButtons" ui-sref="home">Home</a></li>
+        <li><a id="navButtons" ui-sref="todo">To-Do List</a></li>
+        <li><a id="navButtons" ui-sref="signin">Sign In</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="todo">To-Do List</a></li>
+        <li><a ui-sref="signin">Sign In</a></li>
+      </ul>
+    </div>
+  </nav>
 
-      <!-- ==================== -->
-      <!-- Menu collapse script -->
-      <!-- ==================== -->
-      <script type="text/javascript">
-        $(".button-collapse").sideNav({closeOnClick: true});
-      </script>
+  <!-- ==================== -->
+  <!-- Menu collapse script -->
+  <!-- ==================== -->
+  <script type="text/javascript">
+    $(".button-collapse").sideNav({
+      closeOnClick: true
+    });
+  </script>
 
-      <!-- =============================================== -->
-      <!-- ===================UI VIEW===================== -->
-      <!-- =============================================== -->
-      <div ui-view class="container"></div>
+  <!-- =============================================== -->
+  <!-- ===================UI VIEW===================== -->
+  <!-- =============================================== -->
+  <div ui-view class="container" id="backgroundContainer"></div>
 
   <!-- ===================Underscore, angular, ur-router scripts===================== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
@@ -52,5 +54,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
   <script src="js/angularcontroller.js"></script>
   <script src="app.js"></script>
+
 </body>
+
 </html>

@@ -1,24 +1,26 @@
 <!-- HOME UI VIEW -->
 
-<h1>Welcome!</h1>
-
+<div class="container">
 <!-- ========== -->
 <!-- Login form -->
 <!-- ========== -->
-<div class="row">
-  <form class="col s12" ng-submit="mainCtrl.signIn()">
-    <div class="row">
-      <div class="input-field col s6">
-        <input id="first_name" type="text" class="validate">
-        <label for="first_name">Username</label>
+  <div class="row">
+    <h2>Welcome!</h2>
+    <form class="col s12" ng-submit="mainCtrl.signIn()">
+      <!-- <img src="css/image/english-aerial-landscape.jpg" alt="" /> -->
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name">Username</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Password</label>
+        </div>
+        <button class="btn waves-effect waves-light black-text white" type="submit" name="action">Submit
+          <i class="material-icons right">vpn_key</i>
+        </button>
       </div>
-      <div class="input-field col s6">
-        <input id="last_name" type="text" class="validate">
-        <label for="last_name">Password</label>
-      </div>
-      <button class="btn waves-effect waves-light deep-orange lighten-1" type="submit" name="action">Submit
-        <i class="material-icons right">vpn_key</i>
-      </button>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

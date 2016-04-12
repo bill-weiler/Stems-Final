@@ -4,7 +4,7 @@
 <!-- ======================== -->
 <!-- =====Modal trigger=====  -->
 <!-- ======================== -->
-<a class="waves-effect waves-light btn modal-trigger deep-orange lighten-1" href="#modal1">+ Add New Client</a>
+<a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal1">+ Add New Client</a>
 
 <!-- ========================= -->
 <!-- New client modal content  -->
@@ -78,7 +78,7 @@
 <!-- Client List ng-repeat -->
 <!-- ===================== -->
 <div class="collection">
-  <a ng-repeat="c in mainCtrl.clientsArray | orderBy : 'lastName'" href="#/clients/{{c.lastName}}" class="collection-item active">{{c.firstName}} {{c.lastName}}</a>
+  <a ng-repeat="c in mainCtrl.clientsArray | orderBy : 'lastName'" href="#/clients/{{c.lastName}}" class="collection-item active black-text white">{{c.firstName}} {{c.lastName}}</a>
 </div>
 
 
