@@ -2,7 +2,7 @@
   'use strict';
 
   //=============Module and dependency injector==============\\
-  angular.module('StemsAppp', ['GreenSheets', 'ui.router'])
+  angular.module('StemsAppp', ['ui.router'])
   .config(MainRouter)
 
 //=============UI Router==============\\

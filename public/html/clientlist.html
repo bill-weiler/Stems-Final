@@ -1,5 +1,6 @@
 <!-- CLIENTS UI VIEW -->
-<h3>Client List</h3>
+<div id="clientProileBackgroundContainer">
+  <h3 class="white-text">Client List</h3>
 
 <!-- ======================== -->
 <!-- =====Modal trigger=====  -->
@@ -80,6 +81,8 @@
 <div class="collection">
   <a ng-repeat="c in mainCtrl.clientsArray | orderBy : 'lastName'" href="#/clients/{{c.lastName}}" class="collection-item active black-text white">{{c.firstName}} {{c.lastName}}</a>
 </div>
+</div>
+
 
 
 <script type="text/javascript">

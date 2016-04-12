@@ -1,11 +1,11 @@
 <!-- TO-DO UI VIEW -->
 
-<div class="row">
+<div class="row" id="todoBackgroundContainer">
   <div class="col s12">
-    <h2>To-Do</h2>
+    <h2 class="white-text">To-Do List</h2>
     <ul class="collection">
       <li class="collection-item avatar" ng-repeat="t in mainCtrl.toDosArray">
-        <img src="image/houseicon.png" alt="trowel" class="circle">
+        <img src="css/image/houseicon.png" alt="trowel" class="circle">
         <p id="boldText">{{t.firstName}} {{t.lastName}}:</p>
         <p>{{t.description}}</p>
         <a href="" ng-click="mainCtrl.removeToDo(t)" class="secondary-content"><i class="material-icons black-text">delete</i></a>

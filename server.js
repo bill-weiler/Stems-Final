@@ -6,7 +6,7 @@ var express     = require('express'),
     path        = require('path'),
     location    = require('location'),
     mongoose    = require('mongoose'),
-    // apiRoutes   = require('./api_routes'),
+    apiRoutes   = require('./api_routes'),
     port        = process.env.PORT || 8080,
     databaseURL = "mongodb://localhost:27017/stemsData"
 
@@ -19,7 +19,7 @@ var express     = require('express'),
     app.use(bodyP.json())
     app.use(bodyP.urlencoded({extended: true}))
     app.use(cors())
-    // app.use('/api/v1', apiRoutes)
+    app.use('/api/v1', apiRoutes)
     app.use(express.static(__dirname + '/public'))
 
     app.listen(port, function(err){

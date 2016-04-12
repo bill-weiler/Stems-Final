@@ -8,7 +8,7 @@ angular.module('myTodoFactory', [])
 
   function todoFactory = ($http){
     var todoData = {},
-      apiUrl = 'http://localhost:8080/api/v1/clients'
+      apiUrl = 'http://localhost:8080/api/v1/stemsData/todos'
 
 
   } //end of todoFactory

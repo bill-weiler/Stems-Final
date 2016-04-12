@@ -2,8 +2,8 @@
 
 <div class="textStyle" ng-init="mainCtrl.getClient()">
 </div>
-<div class="row">
-  <h2>{{mainCtrl.client.firstName}} {{mainCtrl.client.lastName}}<a href="#/clients" ng-click="mainCtrl.removeClient()"><i  class="material-icons black-text" id="deleteIcon">delete</i></a></h2>
+<div class="row" id="clientProileBackgroundContainer">
+  <h2 class="white-text">{{mainCtrl.client.firstName}} {{mainCtrl.client.lastName}}<a href="#/clients" ng-click="mainCtrl.removeClient()"><i  class="material-icons black-text" id="deleteIcon">delete</i></a></h2>
 
   <!-- ============================== -->
   <!-- Edit information modal trigger -->

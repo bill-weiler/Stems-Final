@@ -1,21 +1,23 @@
 body {
-  background-image: url(image/barnimages_pisa_09.jpg);
+  /*background-image: url(image/barnimages_pisa_09.jpg);*/
+  /*background-image: url(image/P1000966.JPG);*/
+  /*background-image: url(image/IMG6.jpg);*/
   left: 0;
   top: 0;
   width: 100%;
   height: auto;
   background-repeat: no-repeat;
   background-size: cover;
-  /*font-family: Lido;*/
+  font-family: Lato;
 }
 #navButtons {
   font-size: 1.5rem;
-  color: #FDF5E6;
+  color: white;
 }
 #stemsLogo {
   padding-left: 10px;
   font-size: 5rem;
-  color: #FDF5E6;
+  color: white;
 }
 #deleteIcon {
   margin-left: 10px;
@@ -26,8 +28,22 @@ body {
 #boldText {
   font-weight: bold;
 }
-#backgroundContainer {
-  background-color: rgba(253,245,230, 0.85)
+#todoBackgroundContainer {
+  background-color: rgba(0,0,0,0.65);
+  top: 20px;
+  position: relative;
+}
+#signinBackgroundContainer {
+  background-color: rgba(0,0,0,0.65);
+}
+#clientListBackgroundContainer {
+  background-color: rgba(0,0,0,0.65);
+}
+#clientProileBackgroundContainer {
+  background-color: rgba(0,0,0,0.65);
+}
+.navBarColor {
+  background-color: rgba(0,0,0,0.65);
 }
 .borderBoxes {
   background-color: #FFFEC6;
@@ -40,7 +56,7 @@ body {
   color: #4D4D4D;
 }
 .notesContainer {
-  border: 2px solid #4D4D4D;
+  border: 2px solid black;
   border-radius: 10px;
   padding: 5px;
   height: auto;

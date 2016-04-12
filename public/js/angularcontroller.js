@@ -1,6 +1,6 @@
 //==Module Name==\\
-angular.module('GreenSheets', [])
-  .controller('MainController', MainController)
+angular.module('StemsApp')
+  .controller('MainController', ['myClientFactory', MainController)
 
 //==Controller as==\\
 function MainController($stateParams, $location) {
@@ -36,7 +36,8 @@ mainCtrl.propertyNoteArray = []
 //==============Controller Functions===============\\
 //=================================================\\
 
-mainCtrl.getClient = function(){
+
+mainCtrl.getSingleClient = function(){
   var search = $stateParams.lname
   var pos = mainCtrl.clientsArray.map(function(e) {return e.lastName }).indexOf(search)
   mainCtrl.client = mainCtrl.clientsArray[pos]
