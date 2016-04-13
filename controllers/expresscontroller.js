@@ -1,4 +1,4 @@
-var db = require('../controllers/expresscontroller')
+var db = require('../models/clientSchema')
 
 module.exports = {
   clientController: {
@@ -45,7 +45,8 @@ module.exports = {
         if (req.body.state)       {client.state = req.body.state}
         if (req.body.zipCode)     {client.zipCode = req.body.zipCode}
         if (req.body.doorCode)    {client.doorCode = req.body.doorCode}
-        rest.save(function (err, c) {
+        client.save(function (err, c) {
+          console.log('Updating client');
           res.json(c)
         })
       })

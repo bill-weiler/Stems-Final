@@ -8,8 +8,23 @@ angular.module('myTodoFactory', [])
 
   function todoFactory = ($http){
     var todoData = {},
-      apiUrl = 'http://localhost:8080/api/v1/stemsData/todos'
+      apiUrl = '/api/v1/stemsData/todos'
 
+      todoData.getAll = function() {
+        console.log(Getting all clients)
+        return $http.get(apiurl)
+      }
+
+      todoData.createNewClient = function(restaurant) {
+        console.log('creating new client')
+        return $http.post(apiUrl, client)
+      }
+
+      todoData.destroy = function(id){
+        console.log('deleting client')
+        return = $http.delete(apiUrl + '/' + id)
+      }
+      return todoData
 
   } //end of todoFactory
 

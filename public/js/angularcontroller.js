@@ -1,9 +1,9 @@
 //==Module Name==\\
 angular.module('StemsApp')
-  .controller('MainController', ['myClientFactory', MainController)
+  .controller('MainController', ['myClientFactory', MainController])
 
 //==Controller as==\\
-function MainController($stateParams, $location) {
+function MainController($stateParams, $location, clientFactory) {
   var mainCtrl = this
 
 
@@ -36,6 +36,16 @@ mainCtrl.propertyNoteArray = []
 //==============Controller Functions===============\\
 //=================================================\\
 
+clientFactory.getAll()
+  .then(function(res){
+    mainCtrl.clients = res.data
+  })
+
+mainCtrl.createNewClient = function(){
+  mainCtrl.clientsArray.push(mainCtrl.newClient)
+  mainCtrl.newClient = {}
+}
+
 mainCtrl.signIn = function(){
   $location.path('/clients')
 }
@@ -44,11 +54,6 @@ mainCtrl.getSingleClient = function(){
   var search = $stateParams.lname
   var pos = mainCtrl.clientsArray.map(function(e) {return e.lastName }).indexOf(search)
   mainCtrl.client = mainCtrl.clientsArray[pos]
-}
-
-mainCtrl.createNewClient = function(){
-  mainCtrl.clientsArray.push(mainCtrl.newClient)
-  mainCtrl.newClient = {}
 }
 
 mainCtrl.newToDo = function(){
