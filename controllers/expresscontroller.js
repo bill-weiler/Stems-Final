@@ -1,4 +1,4 @@
-var db = require('../models/clientSchema')
+var db = require('../models/schemas')
 
 module.exports = {
   clientController: {

@@ -99,7 +99,7 @@ this.notes       = []
 }
 
 //=================================================\\
-//============To-Do Constructor Function==========\\
+//============To-Do Constructor Function===========\\
 //=================================================\\
 function ToDoItem(firstName, lastName, description){
 this.firstName   = firstName
