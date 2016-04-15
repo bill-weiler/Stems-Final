@@ -19,7 +19,7 @@ var express     = require('express'),
     app.use(bodyP.json())
     app.use(bodyP.urlencoded({extended: true}))
     app.use(cors())
-    app.use('/api/v1', apiRoutes)
+    app.use('/api/v1/stemsData', apiRoutes)
     app.use(express.static(__dirname + '/public'))
 
     app.listen(port, function(err){

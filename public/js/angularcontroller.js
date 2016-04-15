@@ -1,9 +1,9 @@
 //==Module Name==\\
-angular.module('StemsApp')
-  .controller('MainController', ['myClientFactory', MainController])
+angular.module('mainCtrl',[])
+  .controller('mainController',  mainController)
 
 //==Controller as==\\
-function MainController($stateParams, $location, clientFactory) {
+function mainController($stateParams, $location, clientFactory) {
   var mainCtrl = this
 
 

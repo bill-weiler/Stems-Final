@@ -4,15 +4,15 @@
   angular.module('myClientFactory', [])
     .factory('clientFactory', clientFactory)
 
-  clientFactory.$inject = [$http]
+  clientFactory.$inject = ['$http']
 
-  function clientFactory = ($http) {
+  function clientFactory ($http) {
     var clientData = {},
       apiUrl = '/api/v1/stemsData/clients'
 
     clientData.getAll = function() {
-      console.log(Getting all clients)
-      return $http.get(apiurl)
+      console.log('Getting all clients')
+      return $http.get(apiUrl)
     }
 
     clientData.createNewClient = function(restaurant) {
@@ -25,14 +25,14 @@
       return $http.get(apiUrl + '/' + id)
     }
 
-    clientData.update = function(id, client){
+    clientData.update = function(id, client) {
       console.log('updating client information')
-      return = $http.put(apiUrl + '/' + id, client)
+      return $http.put(apiUrl + '/' + id, client)
     }
 
-    clientData.destroy = function(id){
+    clientData.destroy = function(id) {
       console.log('deleting client')
-      return = $http.delete(apiUrl + '/' + id)
+      return $http.delete(apiUrl + '/' + id)
     }
     return clientData
 
