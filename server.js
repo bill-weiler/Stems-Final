@@ -8,7 +8,7 @@ var express     = require('express'),
     mongoose    = require('mongoose'),
     apiRoutes   = require('./api_routes'),
     port        = process.env.PORT || 8080,
-    databaseURL = "mongodb://localhost:27017/stemsData"
+    databaseURL = "mongodb://localhost:27017/stemsApp"
 
     mongoose.connect(databaseURL, function(err){
       if(err) console.log(err)
@@ -19,7 +19,7 @@ var express     = require('express'),
     app.use(bodyP.json())
     app.use(bodyP.urlencoded({extended: true}))
     app.use(cors())
-    app.use('/api/v1/stemsData', apiRoutes)
+    app.use('/api/v1/stemsApp', apiRoutes)
     app.use(express.static(__dirname + '/public'))
 
     app.listen(port, function(err){

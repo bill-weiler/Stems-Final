@@ -8,7 +8,7 @@
 
   function clientFactory ($http) {
     var clientData = {},
-      apiUrl = '/api/v1/stemsData/clients'
+      apiUrl = '/api/v1/stemsApp/clients'
 
     clientData.getAll = function() {
       console.log('Getting all clients')

@@ -79,7 +79,7 @@
 <!-- Client List ng-repeat -->
 <!-- ===================== -->
 <div class="collection">
-  <a ng-repeat="c in mainCtrl.clientsArray | orderBy : 'lastName'" href="#/clients/{{c.lastName}}" class="collection-item active black-text white">{{c.firstName}} {{c.lastName}}</a>
+  <a ng-repeat="c in mainCtrl.clients | orderBy : 'lastName'" ng-click='mainCtrl.getSingleClient(c._id)' class="collection-item active black-text white">{{c.firstName}} {{c.lastName}}</a>
 </div>
 </div>
 

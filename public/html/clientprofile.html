@@ -1,9 +1,9 @@
 <!-- CLIENT PROFILE UI VIEW -->
 
-<div class="textStyle" ng-init="mainCtrl.getClient()">
+<div class="textStyle" >
 </div>
 <div class="row" id="clientProileBackgroundContainer">
-  <h2 class="white-text">{{mainCtrl.client.firstName}} {{mainCtrl.client.lastName}}<a href="#/clients" ng-click="mainCtrl.removeClient()"><i  class="material-icons black-text" id="deleteIcon">delete</i></a></h2>
+  <h2 class="white-text">{{cCtrl.client.firstName}} {{cCtrl.client.lastName}}<a href="#/clients" ng-click="cCtrl.removeClient()"><i  class="material-icons black-text" id="deleteIcon">delete</i></a></h2>
 
   <!-- ============================== -->
   <!-- Edit information modal trigger -->
@@ -21,21 +21,21 @@
   <div class="row" id="rowSpacing">
     <div class="col s6">
       <i class="material-icons prefix">email</i>
-      <h6>Address: {{mainCtrl.client.address}} {{mainCtrl.client.city}}, {{mainCtrl.client.state}} {{mainCtrl.client.zipCode}}</h6>
+      <h6>Address: {{cCtrl.client.address}} {{cCtrl.client.city}}, {{cCtrl.client.state}} {{cCtrl.client.zipCode}}</h6>
     </div>
     <div class="col s6">
       <i class="material-icons prefix">email</i>
-      <h6>Phone: {{mainCtrl.client.phoneNumber}}</h6>
+      <h6>Phone: {{cCtrl.client.phoneNumber}}</h6>
     </div>
   </div>
   <div class="row">
     <div class="col s6">
       <i class="material-icons prefix">account_circle</i>
-      <h6>Email: {{mainCtrl.client.email}}</h6>
+      <h6>Email: {{cCtrl.client.email}}</h6>
     </div>
     <div class="col s6">
       <i class="material-icons prefix">phone</i>
-      <h6>Door Code: {{mainCtrl.client.doorCode}}</h6>
+      <h6>Door Code: {{cCtrl.client.dooCode}}</h6>
     </div>
   </div>
 
@@ -46,17 +46,17 @@
         <h5>Property Notes:</h5>
         <div class="propNoteStyle">
           <ul class="collection">
-            <li class="collection-item" ng-repeat="n in mainCtrl.client.notes">{{n}}</li>
+            <li class="collection-item" ng-repeat="n in cCtrl.client.notes">{{n}}</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <form class="col s12" ng-submit="mainCtrl.addNote()">
+    <form class="col s12" ng-submit="cCtrl.addNote()">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" ng-model="mainCtrl.newPropertyNote"></textarea>
+          <textarea id="textarea1" class="materialize-textarea" ng-model="cCtrl.newPropertyNote"></textarea>
           <label for="textarea1">New Property Note</label>
           <button class="btn-tiny waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
@@ -66,10 +66,10 @@
     </form>
   </div>
   <div class="row">
-    <form class="col s12" ng-submit="mainCtrl.newToDo()">
+    <form class="col s12" ng-submit="cCtrl.newToDo()">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" ng-model="mainCtrl.newToDoItem"></textarea>
+          <textarea id="textarea1" class="materialize-textarea" ng-model="cCtrl.newToDoItem"></textarea>
           <label for="textarea1">New To-Do</label>
           <button class="btn-tiny waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
@@ -87,46 +87,46 @@
 <!-- ======================== -->
 <!-- Edit client info modal   -->
 <!-- ======================== -->
-<form class="col s12" ng-submit="mainCtrl.editClient()">
+<form class="col s12" ng-submit="cCtrl.editClient()">
   <div id="modal3" class="modal">
     <div class="modal-content">
       <h4>Edit Info</h4>
       <div class="row">
         <div class="row">
           <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate" ng-model="mainCtrl.client.firstName">
+            <input id="first_name" type="text" class="validate" ng-model="cCtrl.client.firstName">
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate" ng-model="mainCtrl.client.lastName">
+            <input id="last_name" type="text" class="validate" ng-model="cCtrl.client.lastName">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input id="email" type="email" class="validate" ng-model="mainCtrl.client.email">
+            <input id="email" type="email" class="validate" ng-model="cCtrl.client.email">
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input id="icon_telephone" type="tel" class="validate" ng-model="mainCtrl.client.phoneNumber">
+              <input id="icon_telephone" type="tel" class="validate" ng-model="cCtrl.client.phoneNumber">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="street_address" type="text" class="validate" ng-model="mainCtrl.client.address">
+            <input id="street_address" type="text" class="validate" ng-model="cCtrl.client.address">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="disabled" type="text" class="validate" ng-model="mainCtrl.client.city">
+            <input id="disabled" type="text" class="validate" ng-model="cCtrl.client.city">
           </div>
         </div>
         <div>
           <div class="row">
             <div class="input-field col s6">
-              <input id="password" type="text" class="validate" ng-model="mainCtrl.client.state">
+              <input id="password" type="text" class="validate" ng-model="cCtrl.client.state">
             </div>
             <div class="input-field col s6">
-              <input id="password" type="text" class="validate" ng-model="mainCtrl.client.zipCode">
+              <input id="password" type="text" class="validate" ng-model="cCtrl.client.zipCode">
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 //==Module Name==\\
 angular.module('mainCtrl',[])
   .controller('mainController',  mainController)
+  .controller('clientCtrl', clientCtrl)
 
 //==Controller as==\\
 function mainController($stateParams, $location, clientFactory) {
@@ -12,12 +13,12 @@ function mainController($stateParams, $location, clientFactory) {
 //==============================================\\
 
 //==Clients==\\
-mainCtrl.Devereaux    = new Client('Blanche',  'Devereaux', '555-555-5555',  'bdevereaux@gmail.com','123 ABC Rd.', 'Denver', 'CO', '80218', '98765')
-mainCtrl.Zbornak      = new Client('Dorothy',  'Zbornak' ,  '444-444-4444',  'dzbornak@gmail.com',  '456 DEF Rd.', 'Denver', 'CO', '80218', '54321')
-mainCtrl.Nylund       = new Client('Rose',     'Nylund' ,   '333-333-3333',  'rnylund@gmail.com',   '789 GHI Rd.', 'Denver', 'CO', '80218', '45678')
-mainCtrl.Petrillo     = new Client('Sophia',   'Petrillo' , '222-222-2222',  'spetrillo@gmail.com', '101 JKL Rd.', 'Denver', 'CO', '80218', '45678')
-mainCtrl.clientsArray = [mainCtrl.Devereaux, mainCtrl.Zbornak, mainCtrl.Nylund, mainCtrl.Petrillo]
-mainCtrl.newClient    = {}
+// mainCtrl.Devereaux    = new Client('Blanche',  'Devereaux', '555-555-5555',  'bdevereaux@gmail.com','123 ABC Rd.', 'Denver', 'CO', '80218', '98765')
+// mainCtrl.Zbornak      = new Client('Dorothy',  'Zbornak' ,  '444-444-4444',  'dzbornak@gmail.com',  '456 DEF Rd.', 'Denver', 'CO', '80218', '54321')
+// mainCtrl.Nylund       = new Client('Rose',     'Nylund' ,   '333-333-3333',  'rnylund@gmail.com',   '789 GHI Rd.', 'Denver', 'CO', '80218', '45678')
+// mainCtrl.Petrillo     = new Client('Sophia',   'Petrillo' , '222-222-2222',  'spetrillo@gmail.com', '101 JKL Rd.', 'Denver', 'CO', '80218', '45678')
+// mainCtrl.clientsArray = [mainCtrl.Devereaux, mainCtrl.Zbornak, mainCtrl.Nylund, mainCtrl.Petrillo]
+// mainCtrl.newClient    = {}
 
 //==To-Dos==\\
 mainCtrl.toDoItem1   = new ToDoItem('Blanche', 'Devereaux', 'Spring clean-up and annuals')
@@ -35,11 +36,19 @@ mainCtrl.propertyNoteArray = []
 //=================================================\\
 //==============Controller Functions===============\\
 //=================================================\\
-
+console.log('Params ',$stateParams);
 clientFactory.getAll()
   .then(function(res){
     mainCtrl.clients = res.data
   })
+
+  mainCtrl.getSingleClient = function(id){
+    clientFactory.getSingleClient(id)
+    .then(function(res){
+      mainCtrl.client = res.data
+      $location.path('/clients/' + res.data._id)
+    })
+  }
 
 mainCtrl.createNewClient = function(){
   mainCtrl.clientsArray.push(mainCtrl.newClient)
@@ -50,11 +59,6 @@ mainCtrl.signIn = function(){
   $location.path('/clients')
 }
 
-mainCtrl.getSingleClient = function(){
-  var search = $stateParams.lname
-  var pos = mainCtrl.clientsArray.map(function(e) {return e.lastName }).indexOf(search)
-  mainCtrl.client = mainCtrl.clientsArray[pos]
-}
 
 mainCtrl.newToDo = function(){
   var myToDoItem = new ToDoItem(mainCtrl.client.firstName, mainCtrl.client.lastName, mainCtrl.newToDoItem)
@@ -109,3 +113,10 @@ this.description = description
 
 
 } //End of controller
+function clientCtrl($stateParams, $location, clientFactory){
+  var cCtrl = this;
+  clientFactory.getSingleClient($stateParams.id)
+  .then(function(res){
+    cCtrl.client = res.data
+  })
+}
