@@ -2,7 +2,7 @@
   'use strict';
 
   //=============Module and dependency injector==============\\
-  angular.module('StemsApp', ['ui.router','myClientFactory','mainCtrl'])
+  angular.module('StemsApp', ['ui.router','myClientFactory','mainControl'])
   .config(MainRouter)
 
 //=============UI Router==============\\

@@ -10,7 +10,7 @@
 <!-- ========================= -->
 <!-- New client modal content  -->
 <!-- ========================= -->
-<form class="col s12" ng-submit="mainCtrl.createNewClient()">
+<form class="col s12" ng-submit="mainCtrl.createNewClient(mainCtrl.newClient)">
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>New Client</h4>
@@ -61,7 +61,7 @@
             </div>
             <div>
               <div class="input-field col s6">
-                <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.zipCode">
+                <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.doorCode">
                 <label for="password">Door Code</label>
               </div>
             </div>
@@ -70,7 +70,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" name="button" class=" modal-action modal-close waves-effect waves-green btn-flat deep-orange lighten-1">Submit</button>
+      <button type="submit" name="button" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
     </div>
   </div>
 </form>

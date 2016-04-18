@@ -11,11 +11,11 @@
       apiUrl = '/api/v1/stemsData/todos'
 
     todoData.getAll = function() {
-      console.log(Getting all clients)
+      console.log('Getting all clients')
       return $http.get(apiurl)
     }
 
-    todoData.createNewClient = function(restaurant) {
+    todoData.createNewClient = function(client) {
       console.log('creating new client')
       return $http.post(apiUrl, client)
     }

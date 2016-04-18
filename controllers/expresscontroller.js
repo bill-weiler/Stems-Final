@@ -8,7 +8,7 @@ module.exports = {
         if (err) {
           res.json(err)
         } else {
-          console.log('Getting all clients')
+          console.log('Express: getting all clients')
           res.json(clients)
         }
       })
@@ -19,7 +19,7 @@ module.exports = {
         if (err) {
           res.json(err)
         } else {
-          console.log('Getting a single client')
+          console.log('Express: getting a single client')
           res.json(client)
         }
       })
@@ -29,7 +29,7 @@ module.exports = {
       var client = new db.Client(req.body)
       client.save(function (err, client) {
         if (err) res.json(err)
-        console.log('Adding a new client')
+        console.log('Express: adding a new client')
         res.json(client)
       })
     },
@@ -46,7 +46,7 @@ module.exports = {
         if (req.body.zipCode)     {client.zipCode = req.body.zipCode}
         if (req.body.doorCode)    {client.doorCode = req.body.doorCode}
         client.save(function (err, c) {
-          console.log('Updating client');
+          console.log('Express: updating client');
           res.json(c)
         })
       })
@@ -55,7 +55,7 @@ module.exports = {
     destroy: function (req, res) {
       db.Client.remove({_id: req.params.id}, function(err){
         if (err) res.json(err)
-        res.json({message: "Deleted client!"})
+        res.json({message: "Express: deleted client!"})
       })
     }
   }
