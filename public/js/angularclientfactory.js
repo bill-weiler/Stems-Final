@@ -34,6 +34,6 @@
     }
     return clientData
 
-  } //end of cllientFactory
+  } //end of clientFactory
 
 }()); //end of iife

@@ -12,11 +12,13 @@ body {
 }
 #navButtons {
   font-size: 1.5rem;
+  /*color: black;*/
   color: white;
 }
 #stemsLogo {
   padding-left: 10px;
   font-size: 5rem;
+  /*color: black;*/
   color: white;
 }
 #deleteIcon {
@@ -44,6 +46,7 @@ body {
 }
 .navBarColor {
   background-color: rgba(0,0,0,0.65);
+  /*background-color: rgba(225,225,225,0.9);*/
 }
 .borderBoxes {
   background-color: #FFFEC6;

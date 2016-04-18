@@ -54,6 +54,7 @@ module.exports = {
 
     destroy: function (req, res) {
       db.Client.remove({_id: req.params.id}, function(err){
+        console.log(req.params.id);
         if (err) res.json(err)
         res.json({message: "Express: deleted client!"})
       })

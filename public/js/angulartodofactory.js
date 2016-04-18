@@ -4,9 +4,9 @@
   angular.module('myTodoFactory', [])
     .factory('todoFactory', todoFactory)
 
-  todoFactory.$inject = [$http]
+  todoFactory.$inject = ['$http']
 
-  function todoFactory = ($http) {
+  function todoFactory ($http) {
     var todoData = {},
       apiUrl = '/api/v1/stemsData/todos'
 
@@ -15,14 +15,14 @@
       return $http.get(apiurl)
     }
 
-    todoData.createNewClient = function(client) {
-      console.log('creating new client')
-      return $http.post(apiUrl, client)
+    todoData.createNewToDo = function(client) {
+      console.log('creating new to-do')
+      return $http.post(apiUrl, todo)
     }
 
     todoData.destroy = function(id) {
-      console.log('deleting client')
-      return = $http.delete(apiUrl + '/' + id)
+      console.log('deleting item')
+      return $http.delete(apiUrl + '/' + id)
     }
     return todoData
 
