@@ -95,18 +95,18 @@ function clientCtrl($state, $stateParams, $location, clientFactory) {
     if (x == true) {
       clientFactory.destroy($stateParams.id)
         .then(function(res) {
+          $state.go('home')
           console.log(res)
         })
     }
   }
 
-  cCtrl.editClient = function(client){
-    console.log(client);
+  cCtrl.editClient = function(client) {
     clientFactory.update(client._id, client)
-    .then(function(res) {
-      console.log(res)
-    })
-}
+      .then(function(res) {
+        console.log(res)
+      })
+  }
 
 }
 //==================================================================\\
