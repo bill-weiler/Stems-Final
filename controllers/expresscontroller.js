@@ -1,6 +1,10 @@
 var db = require('../models/schemas')
 
 module.exports = {
+
+  //==================================================================\\
+  //                    BEGIN CLIENT CONTROLLER                       \\
+  //==================================================================\\
   clientController: {
 
     getAll: function(req, res) {
@@ -14,8 +18,10 @@ module.exports = {
       })
     },
 
-    getSingleClient: function (req, res) {
-      db.Client.findOne({_id: req.params.id}, function (err, client) {
+    getSingleClient: function(req, res) {
+      db.Client.findOne({
+        _id: req.params.id
+      }, function(err, client) {
         if (err) {
           res.json(err)
         } else {
@@ -25,40 +31,83 @@ module.exports = {
       })
     },
 
-    createNewClient: function (req, res) {
+    createNewClient: function(req, res) {
       var client = new db.Client(req.body)
-      client.save(function (err, client) {
+      client.save(function(err, client) {
         if (err) res.json(err)
         console.log('Express: adding a new client')
         res.json(client)
       })
     },
 
-    update: function (req, res) {
-      db.Client.findOne({_id: req.params.id}, function (err, client) {
-        if (req.body.firstName)   {client.firstName = req.body.firstName}
-        if (req.body.lastName)    {client.lastName = req.body.lastName}
-        if (req.body.phoneNumber) {client.phoneNumber = req.body.phoneNumber}
-        if (req.body.email)       {client.email = req.body.email}
-        if (req.body.address)     {client.address = req.body.address}
-        if (req.body.city)        {client.city = req.body.city}
-        if (req.body.state)       {client.state = req.body.state}
-        if (req.body.zipCode)     {client.zipCode = req.body.zipCode}
-        if (req.body.doorCode)    {client.doorCode = req.body.doorCode}
-        if (req.body.propNote)    {client.propNote = req.body.propNote}
-        client.save(function (err, c) {
-          console.log('Express: updating client');
-          res.json(c)
-        })
+    update: function(req, res) {
+      db.Client.findOneAndUpdate({
+        _id: req.params.id
+      }, req.body, {
+        new: true
+      }, function(err, client) {
+        console.log('Express: updating client');
+        res.json(client)
       })
     },
 
-    destroy: function (req, res) {
-      db.Client.remove({_id: req.params.id}, function(err){
-        console.log(req.params.id);
+    destroy: function(req, res) {
+      db.Client.remove({
+        _id: req.params.id
+      }, function(err) {
         if (err) res.json(err)
-        res.json({message: "Express: deleted client!"})
+        res.json({
+          message: "Express: deleted client!"
+        })
+      })
+    }
+  },
+
+  //==================================================================\\
+  //                    END CLIENT CONTROLLER                         \\
+  //==================================================================\\
+
+  //==================================================================================================\\
+  //==================================================================================================\\
+
+  //==================================================================\\
+  //                    BEGIN Todo CONTROLLER                         \\
+  //==================================================================\\
+  todoController: {
+
+    getAll: function(req, res) {
+      db.Todo.find({})
+        .populate('client')
+        .exec(function(err, todos) {
+          if (err) {
+            res.json(err)
+          } else {
+            console.log('Express: getting all todos')
+            res.json(todos)
+          }
+        })
+    },
+
+    createNewTodo: function(req, res) {
+      var todo = new db.Todo(req.body)
+      todo.save(function(err, todo) {
+        if (err) res.json(err)
+        console.log('Express: adding a new to-do')
+        res.json(todo)
+      })
+    },
+
+      destroy: function(req, res) {
+        console.log('req.params: ', req.body, req.params.id)
+        db.Todo.remove({_id: req.params.id}, function(err) {
+          console.log('error: ', err)
+          if (err) res.json(err)
+          res.json({message: "Express: deleted client!"})
       })
     }
   }
+
+  //============================================================\\
+  //                    END  CONTROLLER                         \\
+  //============================================================\\
 }

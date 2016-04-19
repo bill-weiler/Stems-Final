@@ -8,21 +8,21 @@
 
   function todoFactory ($http) {
     var todoData = {},
-      apiUrl = '/api/v1/stemsData/todos'
+      apiUrl = '/api/v1/stemsApp/todos'
 
     todoData.getAll = function() {
-      console.log('Getting all clients')
-      return $http.get(apiurl)
+      console.log('Getting all to-dos')
+      return $http.get(apiUrl)
     }
 
-    todoData.createNewToDo = function(client) {
+    todoData.newToDo = function(todo, client) {
       console.log('creating new to-do')
-      return $http.post(apiUrl, todo)
+      return $http.post(apiUrl, {description: todo, client: client._id, complete: false})
     }
 
-    todoData.destroy = function(id) {
-      console.log('deleting item')
-      return $http.delete(apiUrl + '/' + id)
+    todoData.destroy = function(todo) {
+      console.log('Angular Factory: deleting todo')
+      return $http.delete(apiUrl + '/' + todo._id)
     }
     return todoData
 

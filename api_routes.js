@@ -9,12 +9,11 @@ var
     .get(ctrl.clientController.getSingleClient)
     .put(ctrl.clientController.update)
     .delete(ctrl.clientController.destroy)
-  // apiRouter.route('/todos')
-  //   .get(ctrl.clientController.getAll)
-  //   .post(ctrl.clientController.createNewTodo)
-  // apiRouter.route('/todo/:id')
-  //   .get(ctrl.clientController.getSingletodo)
-  //   .delete(ctrl.clientController.destroy)
+  apiRouter.route('/todos')
+    .get(ctrl.todoController.getAll)
+    .post(ctrl.todoController.createNewTodo)
+  apiRouter.route('/todos/:id')
+    .delete(ctrl.todoController.destroy)
 
 
 module.exports  = apiRouter

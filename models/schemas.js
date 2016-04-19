@@ -65,7 +65,7 @@ var mongoose = require('mongoose'),
     todoSchema    = new Schema({
       client      : {type: mongoose.Schema.Types.ObjectId, ref: 'Client'},
       description : {type: String, required: true},
-      complete    : Boolean
+      complete    : { type: Boolean, default: false }
     })
 
 //=========================\\

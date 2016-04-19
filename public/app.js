@@ -18,7 +18,9 @@ function MainRouter($stateProvider, $urlRouterProvider) {
     })
     .state('todo', {
       url: "/todo",
-      templateUrl: "/html/todo.html"
+      templateUrl: "/html/todo.html",
+      controller: "clientCtrl as cCtrl"
+
     })
     .state('clientProfile', {
       url: "/clients/:id",

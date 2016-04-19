@@ -37,17 +37,6 @@ function mainController($stateParams, $location, clientFactory) {
       })
   }
 
-  // mainCtrl.signIn = function(){
-  //   $location.path('/clients')
-  // }
-  //
-  //
-  // mainCtrl.newToDo = function(){
-  //   var myToDoItem = new ToDoItem(mainCtrl.client.firstName, mainCtrl.client.lastName, mainCtrl.newToDoItem)
-  //   mainCtrl.toDosArray.push(myToDoItem)
-  //   mainCtrl.newToDoItem = ''
-  // }
-  //
   // mainCtrl.removeToDo = function(toDoItem) {
   //   var x = confirm("Delete this item permanently?");
   //   if (x == true) {
@@ -55,18 +44,6 @@ function mainController($stateParams, $location, clientFactory) {
   //   }
   // }
   //
-  // mainCtrl.removeClient = function() {
-  //   var x = confirm("Delete this client permanently?");
-  //   if (x == true) {
-  //     console.log(mainCtrl.clientsArray.indexOf(mainCtrl.client))
-  //     mainCtrl.clientsArray.splice(mainCtrl.clientsArray.indexOf(mainCtrl.client), 1)
-  //   }
-  // }
-  //
-  // mainCtrl.addNote = function(){
-  //   mainCtrl.client.notes.push(mainCtrl.newPropertyNote)
-  //   mainCtrl.newPropertyNote = ''
-  // }
 
 }
 //==================================================================\\
@@ -78,7 +55,7 @@ function mainController($stateParams, $location, clientFactory) {
 //                        ~START CLIENT CONTROLLER~                           \\
 //                                                                            \\
 //============================================================================\\
-function clientCtrl($state, $stateParams, $location, clientFactory) {
+function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory) {
   var cCtrl = this
   var newPropNote = ''
 
@@ -110,10 +87,53 @@ function clientCtrl($state, $stateParams, $location, clientFactory) {
   }
 
   cCtrl.addPropNote = function(client) {
-    clientFactory.update(client._id, client) //push newPropNote into the empty array
-    .then(function(res){
-      console.log(res)
+    client.propNote = client.propNote || []
+    if (client.newPropNote) {
+      client.propNote.push(client.newPropNote)
+    }
+    clientFactory.update(client._id, client)
+      .then(function(res) {
+        console.log(res)
+      })
+    cCtrl.client.newPropNote = ''
+  }
+
+  cCtrl.removePropNote = function(note, client) {
+    var x = confirm("Delete this client permanently?")
+    if (x == true) {
+      client.propNote.splice(client.propNote.indexOf(note), 1)
+      clientFactory.update(client._id, client)
+        .then(function(res) {
+          console.log(res)
+        })
+    }
+  }
+
+  todoFactory.getAll()
+    .then(function(res) {
+      cCtrl.todos = res.data
     })
+
+  cCtrl.addTodo = function(todo, client) {
+    todoFactory.newToDo(todo, client)
+      .then(function(res) {
+        console.log(res);
+      })
+      cCtrl.todo = ''
+  }
+
+  cCtrl.removeToDo = function(todo) {
+    var x = confirm("Delete this item permanently?")
+    if (x == true) {
+      todoFactory.destroy(todo)
+        .then(function(res) {
+          console.log(res)
+          todoFactory.getAll()
+            .then(function(res) {
+              cCtrl.todos = res.data
+            })
+        })
+    }
   }
 }
 //==================================================================\\

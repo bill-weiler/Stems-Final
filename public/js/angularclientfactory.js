@@ -32,6 +32,11 @@
       console.log('Angular Factory: deleting client')
       return $http.delete(apiUrl + '/' + id)
     }
+
+    clientData.destroyPropNote = function(id) {
+      console.log('Angular Factory: deleting note')
+      return $http.delete(apiUrl + '/' + id)
+    }
     return clientData
 
   } //end of clientFactory
