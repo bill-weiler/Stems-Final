@@ -55,7 +55,7 @@ var mongoose = require('mongoose'),
       state       : String,
       zipCode     : Number,
       doorCode    : Number,
-      propNotes   : [String],
+      propNote    : [String],
       greenSheets : [greenSheetSchema]
     })
 

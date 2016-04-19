@@ -80,6 +80,7 @@ function mainController($stateParams, $location, clientFactory) {
 //============================================================================\\
 function clientCtrl($state, $stateParams, $location, clientFactory) {
   var cCtrl = this
+  var newPropNote = ''
 
   //====================\\
   //Controller Functions\\
@@ -108,6 +109,12 @@ function clientCtrl($state, $stateParams, $location, clientFactory) {
       })
   }
 
+  cCtrl.addPropNote = function(client) {
+    clientFactory.update(client._id, client) //push newPropNote into the empty array
+    .then(function(res){
+      console.log(res)
+    })
+  }
 }
 //==================================================================\\
 //                    END OF CLIENT CONTROLLER                      \\

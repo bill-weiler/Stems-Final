@@ -45,6 +45,7 @@ module.exports = {
         if (req.body.state)       {client.state = req.body.state}
         if (req.body.zipCode)     {client.zipCode = req.body.zipCode}
         if (req.body.doorCode)    {client.doorCode = req.body.doorCode}
+        if (req.body.propNote)    {client.propNote = req.body.propNote}
         client.save(function (err, c) {
           console.log('Express: updating client');
           res.json(c)

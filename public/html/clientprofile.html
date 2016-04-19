@@ -26,21 +26,25 @@
   <div class="row" id="rowSpacing">
     <div class="col s6">
       <i class="material-icons prefix">email</i>
-      <h6>Address: {{cCtrl.client.address}} {{cCtrl.client.city}}, {{cCtrl.client.state}} {{cCtrl.client.zipCode}}</h6>
+      <h6>Address:</h6>
+      <h6 id="boldText">{{cCtrl.client.address}} {{cCtrl.client.city}}, {{cCtrl.client.state}} {{cCtrl.client.zipCode}}</h6>
     </div>
     <div class="col s6">
       <i class="material-icons prefix">email</i>
-      <h6>Phone: {{cCtrl.client.phoneNumber}}</h6>
+      <h6>Phone:</h6>
+      <h6>{{cCtrl.client.phoneNumber}}</h6>
     </div>
   </div>
   <div class="row">
     <div class="col s6">
       <i class="material-icons prefix">account_circle</i>
-      <h6>Email: {{cCtrl.client.email}}</h6>
+      <h6>Email:</h6>
+      <h6>{{cCtrl.client.email}}</h6>
     </div>
     <div class="col s6">
       <i class="material-icons prefix">phone</i>
-      <h6>Door Code: {{cCtrl.client.doorCode}}</h6>
+      <h6>Door Code:</h6>
+      <h6>{{cCtrl.client.doorCode}}</h6>
     </div>
   </div>
 
@@ -51,17 +55,17 @@
         <h5>Property Notes:</h5>
         <div class="propNoteStyle">
           <ul class="collection">
-            <li class="collection-item" ng-repeat="n in cCtrl.client.notes">{{n}}</li>
+            <li class="collection-item" ng-repeat="n in cCtrl.client.propNote">{{n}}</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <form class="col s12" ng-submit="cCtrl.addNote()">
+    <form class="col s12" ng-submit="cCtrl.addPropNote(cCtrl.client)">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" ng-model="cCtrl.newPropertyNote"></textarea>
+          <textarea id="textarea1" class="materialize-textarea" ng-model="cCtrl.client.newPropNote"></textarea>
           <label for="textarea1">New Property Note</label>
           <button class="btn-tiny waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
@@ -74,7 +78,7 @@
     <form class="col s12" ng-submit="cCtrl.newToDo()">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" ng-model="cCtrl.newToDoItem"></textarea>
+          <textarea id="textarea1" class="materialize-textarea" ng-model="cCtrl.client.todo"></textarea>
           <label for="textarea1">New To-Do</label>
           <button class="btn-tiny waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
