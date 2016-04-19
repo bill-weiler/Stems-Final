@@ -139,13 +139,13 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
   cCtrl.addGreenSheet = function(greenSheet) {
     client.greenSheet = client.greenSheet || []
     if (client.greenSheet) {
-      client.greenSheet.push(client.newGreenSheet)
+      client.greenSheet.push(client.greenSheet)
     }
     clientFactory.update(client._id, client)
       .then(function(res) {
         console.log(res)
       })
-    cCtrl.client.newPropNote = ''
+    cCtrl.client.greenSheet = ''
   }
 
 

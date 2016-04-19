@@ -1,23 +1,17 @@
 <!-- CLIENT PROFILE UI VIEW -->
 
-<div class="textStyle" >
+<div class="textStyle">
 </div>
 <div class="row" id="clientProileBackgroundContainer">
   <h2 class="white-text">{{cCtrl.client.firstName}} {{cCtrl.client.lastName}}</h2>
 
-  <!-- ========================== -->
   <!-- Green Sheet modal trigger  -->
-  <!-- ========================== -->
-  <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal2">Green Sheet   +</a>
+  <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal2">Green Sheet +</a>
 
-  <!-- ============================== -->
   <!-- Edit information modal trigger -->
-  <!-- ============================== -->
   <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal3"><i class="material-icons right black-text" id="deleteIcon">info_outline</i>Edit</a>
 
-  <!-- ============= -->
   <!-- Delete Button -->
-  <!-- ============= -->
   <a class="waves-effect waves-light btn black-text white" ng-click="cCtrl.removeClient(id)"><i class="material-icons right black-text" id="deleteIcon">delete</i>Delete</a>
 
   <!-- ========================= -->
@@ -48,7 +42,9 @@
     </div>
   </div>
 
+  <!-- ================================== -->
   <!-- ========= Property notes ========= -->
+  <!-- ================================== -->
   <div class="row">
     <div class="col s12">
       <div class="notesContainer">
@@ -75,7 +71,9 @@
     </form>
   </div>
 
+  <!-- ============================= -->
   <!-- ========= Add to-do ========= -->
+  <!-- ============================= -->
   <div class="row">
     <form class="col s12" ng-submit="cCtrl.addTodo(cCtrl.todo, cCtrl.client)">
       <div class="row">
@@ -91,13 +89,13 @@
   </div>
 </div>
 </div>
-<!-- ======================== -->
-<!-- ==End of Page Content==  -->
-<!-- ======================== -->
+<!-- ============================================= -->
+<!-- =============End of Page Content============  -->
+<!-- ============================================= -->
 
-<!-- ======================== -->
-<!-- Edit client info modal   -->
-<!-- ======================== -->
+<!-- =================== -->
+<!-- Edit client modal   -->
+<!-- =================== -->
 <form class="col s12" ng-submit="cCtrl.editClient(cCtrl.client)">
   <div id="modal3" class="modal">
     <div class="modal-content">
@@ -151,6 +149,10 @@
     </div>
   </div>
 </form>
+<!-- ================== -->
+<!-- End client modal   -->
+<!-- ================== -->
+
 
 <!-- ========================= -->
 <!-- Green sheet modal content -->
@@ -206,12 +208,12 @@
             <label for="email">Front Bed Notes</label>
           </div>
         </div>
-        <!-- ======================== -->
+        <!-- ================== -->
         <!-- Front Bed Dropdown -->
         <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ======================== -->
+        <!-- ================== -->
         <div class="input-field col s12 browser-default">
-          <select multiple  ng-model="cCtrl.client.frontOptions">
+          <select multiple ng-model="cCtrl.client.frontOptions">
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Weeded</option>
             <option value="2">Cultivate</option>
@@ -231,10 +233,10 @@
             <label for="email">Back Bed Notes</label>
           </div>
         </div>
-        <!-- ======================== -->
+        <!-- ================= -->
         <!-- Back Bed Dropdown -->
         <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ======================== -->
+        <!-- ================= -->
         <div class="input-field col s12 browser-default">
           <select multiple ng-model="cCtrl.client.backOptions">
             <option value="" disabled selected>Choose your option</option>
@@ -256,10 +258,10 @@
             <label for="email">Side Bed Notes</label>
           </div>
         </div>
-        <!-- ======================== -->
+        <!-- ================= -->
         <!-- Side Bed Dropdown -->
         <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ======================== -->
+        <!-- ================= -->
         <div class="input-field col s12 browser-default">
           <select multiple ng-model="cCtrl.client.sideOptions">
             <option value="" disabled selected>Choose your option</option>
@@ -281,10 +283,10 @@
             <label for="email">Annuals Notes</label>
           </div>
         </div>
-        <!-- ======================== -->
+        <!-- ================ -->
         <!-- Annuals Dropdown -->
         <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ======================== -->
+        <!-- ================ -->
         <div class="input-field col s12 browser-default">
           <select multiple ng-model="cCtrl.client.annualsOptions">
             <option value="" disabled selected>Choose your option</option>
@@ -306,10 +308,10 @@
             <label for="email">Tree/Shrub Notes</label>
           </div>
         </div>
-        <!-- ======================== -->
+        <!-- ===================== -->
         <!-- Trees/Shrubs Dropdown -->
         <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ======================== -->
+        <!-- ===================== -->
         <div class="input-field col s12 browser-default">
           <select multiple ng-model="cCtrl.client.treeOptions">
             <option value="" disabled selected>Choose your option</option>
@@ -378,17 +380,17 @@
   <div class="modal-footer">
     <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">Submit</a>
   </div>
-</form>
+  </form>
 </div>
-<!-- ======================== -->
-<!-- End of Modal Content -->
-<!-- ======================== -->
+<!-- ===================== -->
+<!-- End Green Sheet Modal -->
+<!-- ===================== -->
 
 
 
-<!-- ======================== -->
+<!-- ================ -->
 <!-- JQuery for Modal -->
-<!-- ======================== -->
+<!-- ================ -->
 <script type="text/javascript">
   $(document).ready(function() {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
