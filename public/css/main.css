@@ -10,15 +10,16 @@ body {
   background-size: cover;
   font-family: Lato;
 }
+#addClientButton{
+  margin-top: 15px;
+}
 #navButtons {
   font-size: 1.5rem;
-  /*color: black;*/
   color: white;
 }
 #stemsLogo {
   padding-left: 10px;
   font-size: 5rem;
-  /*color: black;*/
   color: white;
 }
 #deleteIcon {

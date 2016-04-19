@@ -2,9 +2,14 @@
 
 <div class="row" id="todoBackgroundContainer">
   <div class="col s12">
-    <h2 class="white-text">To-Do List</h2>
+    <div class="row">
+      <h3 class="white-text">To-Do</h3>
+      <div class="col s6 white">
+        <input type="text" placeholder="Search..." ng-model="clientSearch">
+      </div>
+    </div>
     <ul class="collection">
-      <li class="collection-item avatar" ng-repeat="t in cCtrl.todos">
+      <li class="collection-item avatar" ng-repeat="t in cCtrl.todos| filter : todoSearch">
         <img src="css/image/houseicon.png" alt="trowel" class="circle">
         <p id="boldText">{{t.client.firstName}} {{t.client.lastName}}</p>
         <p>{{t.description}}</p>

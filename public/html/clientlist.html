@@ -1,85 +1,93 @@
 <!-- CLIENTS UI VIEW -->
 <div id="clientProileBackgroundContainer">
-  <h3 class="white-text">Client List</h3>
+  <div class="row">
+    <div class="col s12">
+      <h3 class="white-text">Client List</h3>
+      <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal1">+ Add Client</a>
+  </div>
+  <div class="row">
+    <div class="col s3 white" id="addClientButton">
+      <input type="text" placeholder="Search..." ng-model="clientSearch">
+    </div>
+  </div>
+  <!-- ======================== -->
+  <!-- =====Modal trigger=====  -->
+  <!-- ======================== -->
 
-<!-- ======================== -->
-<!-- =====Modal trigger=====  -->
-<!-- ======================== -->
-<a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal1">+ Add New Client</a>
-
-<!-- ========================= -->
-<!-- New client modal content  -->
-<!-- ========================= -->
-<form class="col s12" ng-submit="mainCtrl.createNewClient(mainCtrl.newClient)">
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>New Client</h4>
-      <div class="row">
+  <!-- ========================= -->
+  <!-- New client modal content  -->
+  <!-- ========================= -->
+  <form class="col s12" ng-submit="mainCtrl.createNewClient(mainCtrl.newClient)">
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>New Client</h4>
         <div class="row">
-          <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate" ng-model="mainCtrl.newClient.firstName">
-            <label for="first_name">First Name</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate" ng-model="mainCtrl.newClient.lastName">
-            <label for="last_name">Last Name</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <input id="email" type="email" class="validate" ng-model="mainCtrl.newClient.email">
-            <label for="email">Email</label>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="first_name" type="text" class="validate" ng-model="mainCtrl.newClient.firstName">
+              <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate" ng-model="mainCtrl.newClient.lastName">
+              <label for="last_name">Last Name</label>
+            </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input id="icon_telephone" type="tel" class="validate" ng-model="mainCtrl.newClient.phoneNumber">
-              <label for="icon_telephone">Phone Number</label>
+              <input id="email" type="email" class="validate" ng-model="mainCtrl.newClient.email">
+              <label for="email">Email</label>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="street_address" type="text" class="validate" ng-model="mainCtrl.newClient.address">
-            <label for="street_address">Street Address</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="disabled" type="text" class="validate" ng-model="mainCtrl.newClient.city">
-            <label for="disabled">City</label>
-          </div>
-        </div>
-        <div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.state">
-              <label for="password">State</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.zipCode">
-              <label for="password">Zip Code</label>
-            </div>
-            <div>
+            <div class="row">
               <div class="input-field col s6">
-                <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.doorCode">
-                <label for="password">Door Code</label>
+                <input id="icon_telephone" type="tel" class="validate" ng-model="mainCtrl.newClient.phoneNumber">
+                <label for="icon_telephone">Phone Number</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="street_address" type="text" class="validate" ng-model="mainCtrl.newClient.address">
+              <label for="street_address">Street Address</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="disabled" type="text" class="validate" ng-model="mainCtrl.newClient.city">
+              <label for="disabled">City</label>
+            </div>
+          </div>
+          <div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.state">
+                <label for="password">State</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.zipCode">
+                <label for="password">Zip Code</label>
+              </div>
+              <div>
+                <div class="input-field col s6">
+                  <input id="password" type="text" class="validate" ng-model="mainCtrl.newClient.doorCode">
+                  <label for="password">Door Code</label>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="modal-footer">
+        <button type="submit" name="button" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+      </div>
     </div>
-    <div class="modal-footer">
-      <button type="submit" name="button" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
-    </div>
-  </div>
-</form>
+  </form>
 
-<!-- ===================== -->
-<!-- Client List ng-repeat -->
-<!-- ===================== -->
-<div class="collection" ng-init="mainCtrl.init()">
-  <a ng-repeat="c in mainCtrl.clients | orderBy : 'lastName'" ng-click='mainCtrl.getSingleClient(c._id)' href="" class="collection-item active black-text white">{{c.firstName}} {{c.lastName}}</a>
+  <!-- ===================== -->
+  <!-- Client List ng-repeat -->
+  <!-- ===================== -->
+  <div class="collection" ng-init="mainCtrl.init()">
+    <a ng-repeat="c in mainCtrl.clients | orderBy : 'lastName' | filter : clientSearch" ng-click='mainCtrl.getSingleClient(c._id)' href="" class="collection-item active black-text white">{{c.firstName}} {{c.lastName}}</a>
+  </div>
 </div>
 </div>
 

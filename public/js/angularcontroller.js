@@ -135,6 +135,20 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
         })
     }
   }
+
+  cCtrl.addGreenSheet = function(greenSheet) {
+    client.greenSheet = client.greenSheet || []
+    if (client.greenSheet) {
+      client.greenSheet.push(client.newGreenSheet)
+    }
+    clientFactory.update(client._id, client)
+      .then(function(res) {
+        console.log(res)
+      })
+    cCtrl.client.newPropNote = ''
+  }
+
+
 }
 //==================================================================\\
 //                    END OF CLIENT CONTROLLER                      \\

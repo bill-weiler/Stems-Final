@@ -17,6 +17,7 @@ var mongoose = require('mongoose'),
 //==================\\
     greenSheetSchema = new Schema({
     client           : {type: mongoose.Schema.Types.ObjectId, ref: 'Client'},
+    date             : Date,
     dateBegin        : Date,
     dateEnd          : Date,
     team             : [String],
@@ -56,7 +57,7 @@ var mongoose = require('mongoose'),
       zipCode     : Number,
       doorCode    : Number,
       propNote    : [String],
-      greenSheets : [greenSheetSchema]
+      greenSheet : [greenSheetSchema]
     })
 
 //============\\
