@@ -1,6 +1,22 @@
 var
   apiRouter = require('express').Router(),
-  ctrl      = require('./controllers/expresscontroller')
+  jwt       = require('jsonwebtoken'),
+  ctrl      = require('./controllers/expresscontroller'),
+  secret    = 'this is my secret'
+
+  apiRouter.route('/signIn')
+    .post(ctrl.userController.signIn)
+
+  apiRouter.route('/users')
+    .post(ctrl.userController.create)
+
+  apiRouter.use(function(req, res, next){
+     // this is going to run EVERY TIME someone goes to a url that starts with /api
+     // so we should probably check to see if they are logged in here
+    console.log("someone is visiting our API, we should check to see if they are logged in")
+     // ...and then we'll let the request continue on to our app:
+     next()
+  })
 
   apiRouter.route('/clients')
     .get(ctrl.clientController.getAll)
@@ -16,11 +32,7 @@ var
   apiRouter.route('/todos/:id')
     .delete(ctrl.todoController.destroy)
 
-  apiRouter.route('/users')
-    .post(ctrl.userController.create)
 
-  apiRouter.route('/signIn')
-    .post(ctrl.userController.signIn)
 
 
 

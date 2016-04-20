@@ -2,10 +2,30 @@
 
 <div class="row" id="todoBackgroundContainer">
   <div class="col s12">
-    <div class="row">
+    <div class="row" id="todoSearchBar">
       <h3 class="white-text">To-Do</h3>
-      <div class="col s6 white">
-        <input type="text" placeholder="Search..." ng-model="clientSearch">
+      <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal3">+ To-Do</a>
+
+      <!-- ========================= -->
+      <!-- Start to-do modal content  -->
+      <!-- ========================= -->
+      <div id="modal3" class="modal">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="button" class="modal-action modal-close waves-effect waves-green btn-flat black-text white">Submit</button>
+        </div>
+      </div>
+      <!-- ======================== -->
+      <!-- End to-do modal content  -->
+      <!-- ======================== -->
+
+      <div class="row" id="todoSearchBar">
+        <div class="col s6 white" id="addClientButton">
+          <input type="text" placeholder="Search..." ng-model="clientSearch">
+        </div>
       </div>
     </div>
     <ul class="collection">
@@ -18,3 +38,11 @@
     </ul>
   </div>
 </div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+$('.modal-trigger').leanModal();
+});
+</script>

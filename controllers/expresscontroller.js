@@ -1,4 +1,6 @@
-var db = require('../models/schemas')
+var db     = require('../models/schemas'),
+    jwt    = require('jsonwebtoken'),
+    secret = 'this is my secret'
 
 module.exports = {
 
@@ -123,7 +125,7 @@ module.exports = {
   //==================================================================\\
   userController: {
 
-//get req 
+//get req
 
     create: function(req, res) {
       var user = new db.User(req.body)
@@ -142,7 +144,18 @@ module.exports = {
         if (user) {
           //compare hash password
           if (user.checkPassword(req.body.password)) {
-            res.json({mesage: 'Log In Success!'})
+            var token = jwt.sign({
+                   name: user.name,
+                   email: user.email
+                 }, secret, {
+                       expiresInMinutes: 1440
+                   });
+               // 4 - Send back a success message with the JWT
+               res.json({
+                   success: true,
+                   message: 'YOU get a token! YOU get a token! YOU get a token!',
+                   token: token
+               })
           } else {
             res.json({message: 'Password does not match'})
           }

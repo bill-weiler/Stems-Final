@@ -1,18 +1,14 @@
 <!-- CLIENTS UI VIEW -->
-<div id="clientProileBackgroundContainer">
-  <div class="row">
+<div id="clientListMargin">
+  <div class="row" id="backgroundContainer">
     <div class="col s12">
       <h3 class="white-text">Client List</h3>
       <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal1">+ Add Client</a>
-  </div>
-  <div class="row">
-    <div class="col s3 white" id="addClientButton">
+  <div class="row" id="clientSearchBar">
+    <div class="col s6 white" id="addClientButton">
       <input type="text" placeholder="Search..." ng-model="clientSearch">
     </div>
   </div>
-  <!-- ======================== -->
-  <!-- =====Modal trigger=====  -->
-  <!-- ======================== -->
 
   <!-- ========================= -->
   <!-- New client modal content  -->
@@ -88,6 +84,7 @@
   <div class="collection" ng-init="mainCtrl.init()">
     <a ng-repeat="c in mainCtrl.clients | orderBy : 'lastName' | filter : clientSearch" ng-click='mainCtrl.getSingleClient(c._id)' href="" class="collection-item active black-text white">{{c.firstName}} {{c.lastName}}</a>
   </div>
+</div>
 </div>
 </div>
 

@@ -2,8 +2,8 @@
 
 <div class="textStyle">
 </div>
-<div class="row" id="clientProileBackgroundContainer">
-  <h2 class="white-text">{{cCtrl.client.firstName}} {{cCtrl.client.lastName}}</h2>
+<div class="row" id="clientProfileBackgroundContainer">
+  <h2 style="margin: 0;"class="white-text">{{cCtrl.client.firstName}} {{cCtrl.client.lastName}}</h2>
 
   <!-- Green Sheet modal trigger  -->
   <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal2">Green Sheet +</a>
@@ -17,7 +17,7 @@
   <!-- ========================= -->
   <!-- Page content: Client info -->
   <!-- ========================= -->
-  <div class="row" id="rowSpacing">
+  <div class="row white-text" id="rowSpacing">
     <div class="col s6">
       <i class="material-icons prefix">email</i>
       <h6>Address:</h6>
@@ -29,7 +29,7 @@
       <h6>{{cCtrl.client.phoneNumber}}</h6>
     </div>
   </div>
-  <div class="row">
+  <div class="row white-text">
     <div class="col s6">
       <i class="material-icons prefix">account_circle</i>
       <h6>Email:</h6>
@@ -48,7 +48,7 @@
   <div class="row">
     <div class="col s12">
       <div class="notesContainer">
-        <h5>Property Notes:</h5>
+        <h5 class="white-text">Property Notes:</h5>
         <div class="propNoteStyle">
           <ul class="collection">
             <li class="collection-item" ng-repeat="note in cCtrl.client.propNote">{{note}} <a href="" ng-click="cCtrl.removePropNote(note, cCtrl.client)"><i class="material-icons black-text right">delete</i></a></li>
@@ -61,9 +61,9 @@
     <form class="col s12" ng-submit="cCtrl.addPropNote(cCtrl.client)">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" ng-model="cCtrl.client.newPropNote"></textarea>
+          <textarea id="textarea1" class="materialize-textarea white-text" ng-model="cCtrl.client.newPropNote"></textarea>
           <label for="textarea1">New Property Note</label>
-          <button class="btn-tiny waves-effect waves-light" type="submit" name="action">Submit
+          <button class="btn waves-effect waves-light black-text white" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
           </button>
         </div>
@@ -78,9 +78,9 @@
     <form class="col s12" ng-submit="cCtrl.addTodo(cCtrl.todo, cCtrl.client)">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" ng-model="cCtrl.todo"></textarea>
+          <textarea id="textarea1" class="materialize-textarea white-text" ng-model="cCtrl.todo"></textarea>
           <label for="textarea1">New To-Do</label>
-          <button class="btn-tiny waves-effect waves-light" type="submit" name="action">Submit
+          <button class="btn waves-effect waves-light black-text white" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
           </button>
         </div>
