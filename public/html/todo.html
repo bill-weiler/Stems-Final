@@ -9,15 +9,34 @@
       <!-- ========================= -->
       <!-- Start to-do modal content  -->
       <!-- ========================= -->
-      <!-- <div id="modal3" class="modal">
+      <div id="modal3" class="modal">
         <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
+          <h4 class="black-text">Add To-Do</h4>
+          <div class="row">
+            <form class="col s12" ng-submit='cCtrl.addGreenSheet()'>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="date" type="text" class="validate" ng-model="cCtrl.client.date">
+                  <label for="date" placeholder="Date">Description</label>
+                </div>
+              </div>
+              <!-- =============== -->
+              <!-- Client Dropdown -->
+              <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
+              <!-- =============== -->
+              <div class="input-field col s12 browser-default">
+                <select>
+                  <option value="" disabled selected>Client Select</option>
+                  <option value="1">Weeded</option>
+                </select>
+              </div>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" name="button" class="modal-action modal-close waves-effect waves-green btn-flat black-text white">Submit</button>
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">Submit</a>
         </div>
-      </div> -->
+        </form>
+      </div>
       <!-- ======================== -->
       <!-- End to-do modal content  -->
       <!-- ======================== -->
@@ -41,8 +60,13 @@
 
 
 <script type="text/javascript">
-$(document).ready(function(){
-// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-$('.modal-trigger').leanModal();
-});
+  $(document).ready(function() {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('select').material_select();
+  });
 </script>
