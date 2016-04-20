@@ -97,14 +97,61 @@ module.exports = {
       })
     },
 
-      destroy: function(req, res) {
-        console.log('req.params: ', req.body, req.params.id)
-        db.Todo.remove({_id: req.params.id}, function(err) {
-          console.log('error: ', err)
-          if (err) res.json(err)
-          res.json({message: "Express: deleted client!"})
+    destroy: function(req, res) {
+      console.log('req.params: ', req.body, req.params.id)
+      db.Todo.remove({
+        _id: req.params.id
+      }, function(err) {
+        console.log('error: ', err)
+        if (err) res.json(err)
+        res.json({
+          message: "Express: deleted client!"
+        })
       })
     }
+  },
+
+  //==================================================================\\
+  //                    END Todo CONTROLLER                           \\
+  //==================================================================\\
+
+  //==================================================================================================\\
+  //==================================================================================================\\
+
+  //==================================================================\\
+  //                    BEGIN User CONTROLLER                         \\
+  //==================================================================\\
+  userController: {
+
+//get req 
+
+    create: function(req, res) {
+      var user = new db.User(req.body)
+      user.save(function(err, user) {
+        console.log('Express: creating user')
+        if (err) res.json(err)
+        res.json(user)
+      })
+    },
+
+    signIn: function(req, res) {
+      console.log('Signing in')
+      db.User.findOne({email: req.body.email}, function(err, user) {
+        if (err) res.json(err)
+          //check if a user exists
+        if (user) {
+          //compare hash password
+          if (user.checkPassword(req.body.password)) {
+            res.json({mesage: 'Log In Success!'})
+          } else {
+            res.json({message: 'Password does not match'})
+          }
+        } else {
+          res.json({message: 'User does not exist'})
+        }
+      })
+    }
+
   }
 
   //============================================================\\

@@ -2,6 +2,7 @@
 //SCHEMAS!!!!!!!!!!!\\
 //==================\\
 var mongoose = require('mongoose'),
+    bcrypt   = require('bcryptjs')
     Schema   = mongoose.Schema,
 
 //==================\\
@@ -11,6 +12,27 @@ var mongoose = require('mongoose'),
       client      : {type: mongoose.Schema.Types.ObjectId, ref: 'Client'},
       apptDate    : Date
     }),
+
+//===========\\
+//User Schema\\
+//===========\\
+    userSchema   = new Schema({
+      email      : {type: String, required: true},
+      password   : {type: String, required: true},
+      admin      : Boolean
+    }),
+
+    userSchema.pre('save', function(next){
+      var user = this //define scope to ensure you're dealing with the current user
+      if(!user.isModified('password')) return next()//isModified is a mongoose method
+      user.password = bcrypt.hashSync(user.password, 8)
+      next()
+    })
+
+    userSchema.methods.checkPassword = function(pw){
+      var user = this
+      return bcrypt.compareSync(pw, user.password) //ensures user enters the correct password
+    }
 
 //==================\\
 //Green Sheet Schema\\
@@ -72,9 +94,11 @@ var mongoose = require('mongoose'),
 //=========================\\
 //Exporting schemas for use\\
 //=========================\\
+
 module.exports = {
   Appointment  : mongoose.model('Appointment', appointSchema),
   GreenSheet   : mongoose.model('GreenSheet', greenSheetSchema),
   Client       : mongoose.model('Client', clientSchema),
+  User         : mongoose.model('User', userSchema),
   Todo         : mongoose.model('Todo', todoSchema)
 }
