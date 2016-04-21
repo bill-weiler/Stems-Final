@@ -148,7 +148,7 @@ module.exports = {
                    name: user.name,
                    email: user.email
                  }, secret, {
-                       expiresInMinutes: 1440
+                       expiresInMinutes: 720
                    });
                // 4 - Send back a success message with the JWT
                res.json({

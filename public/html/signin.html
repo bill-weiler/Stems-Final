@@ -6,14 +6,14 @@
 <div class="container">
   <div class="row" id="welcomeBackgroundContainer">
     <h2 class="white-text">Welcome!</h2>
-    <form class="col s12" ng-submit="mainCtrl.signIn()">
+    <form class="col s12" ng-submit="lCtrl.doLogin()">
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate">
-          <label for="first_name">Username</label>
+          <input id="first_name" type="text" class="validate"ng-model="lCtrl.loginData.email">
+          <label for="first_name">Email</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
+          <input id="last_name" type="password" class="validate" ng-model="lCtrl.loginData.password">
           <label for="last_name">Password</label>
         </div>
         <button class="btn waves-effect waves-light black-text white" type="submit" name="action">Submit

@@ -60,7 +60,7 @@ body {
   padding: 10px;
   margin-top: 20px;
 }
-.navBarColor {
+#navBarColor {
   background-color: rgba(0,0,0,0.75);
   /*background-color: rgba(225,225,225,0.9);*/
 }

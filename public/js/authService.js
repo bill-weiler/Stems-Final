@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('authService', [])
-      .factory('Auth', function($http, $q, AuthToken) {})
-      .factory('AuthInterceptor', function($q, AuthToken) {})
-      .factory('AuthToken', function($window) {})
+      .factory('Auth', Auth)
+      .factory('AuthInterceptor', AuthInterceptor)
+      .factory('AuthToken', AuthToken)
 
 // ===================\\
 // Auth token FACTORY \\
@@ -14,10 +14,6 @@
 
       authFactory.login = function(email, password) {
         return $http.post('/api/v1/stemsApp/signIn', {email: email, password: password})
-          .then(function(data){
-            AuthToken.setToken(data.token)
-            return data
-          })
       }
       authFactory.logout = function(){
         AuthToken.setToken()
@@ -61,7 +57,7 @@
 // =========================\\
 // Auth interceptor FACTORY \\
 // =========================\\
-      function AuthInterceptor($q, AuthToken) {
+      function AuthInterceptor($q, AuthToken, $location) {
         var interceptorFactory = {}
 
         interceptorFactory.request = function(config){
@@ -69,9 +65,9 @@
           if(token){
             config.headers['x-access-token'] = token
           }
-          return conig
+          return config
         }
-        
+
         interceptorFactory.responseError = function(response){
           if(response.status == 403){
             $location.path('/')
@@ -80,7 +76,6 @@
         }
         return interceptorFactory
       }
-
 
 
     }()) //end of iife

@@ -4,6 +4,7 @@
 angular.module('mainControl', [])
   .controller('mainController', mainController)
   .controller('clientCtrl', clientCtrl)
+  .controller('loginCtrl', loginCtrl)
 
 //============================================================================\\
 //                                                                            \\
@@ -119,7 +120,7 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
       .then(function(res) {
         console.log(res);
       })
-      cCtrl.todo = ''
+    cCtrl.todo = ''
   }
 
   cCtrl.removeToDo = function(todo) {
@@ -153,3 +154,43 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
 //==================================================================\\
 //                    END OF CLIENT CONTROLLER                      \\
 //==================================================================\\
+
+//============================================================================\\
+//                                                                            \\
+//                       ~START Login CONTROLLER~                             \\
+//                                                                            \\
+//============================================================================\\
+// loginCtrl.$inject = ['Auth', '$location', '$rootScope', 'AuthToken']
+
+function loginCtrl(Auth, $location, $rootScope, AuthToken) {
+  var lCtrl = this
+
+  $rootScope.$on('$stateChangeSuccess', function() {
+    lCtrl.loggedIn = Auth.isLoggedIn()
+    if(lCtrl.loggedIn){
+      Auth.getUser()
+      .then(function(res) {
+        lCtrl.user = res.data
+        console.log(res.data);
+      })
+    }else{
+      $location.path('/signin')
+    }
+  })
+
+  lCtrl.doLogin = function() {
+    Auth.login(lCtrl.loginData.email, lCtrl.loginData.password)
+      .then(function(res) {
+        console.log(res.data);
+          AuthToken.setToken(res.data.token)
+          $location.path('/clients')
+      })
+  }
+
+  lCtrl.doLogout = function(){
+    Auth.logout()
+    lCtrl.user = ''
+    $location.path('/clients')
+  }
+}
+  //

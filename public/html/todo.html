@@ -27,7 +27,7 @@
               <div class="input-field col s12 browser-default">
                 <select>
                   <option value="" disabled selected>Client Select</option>
-                  <option value="1">Weeded</option>
+                  <option value="1" ng-repeat="c in mainCtrl.clients | orderBy : 'lastName'">{{c.firstName}} {{c.lastName}}</option>
                 </select>
               </div>
           </div>

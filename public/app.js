@@ -2,11 +2,14 @@
   'use strict';
 
   //=============Module and dependency injector==============\\
-  angular.module('StemsApp', ['ui.router','myClientFactory','mainControl', 'myTodoFactory'])
+  angular.module('StemsApp', ['ui.router','myClientFactory','mainControl', 'myTodoFactory', 'authService'])
   .config(MainRouter)
 
 //=============UI Router==============\\
-function MainRouter($stateProvider, $urlRouterProvider) {
+function MainRouter($stateProvider, $urlRouterProvider, $httpProvider) {
+
+  $httpProvider.interceptors.push('AuthInterceptor')
+
   $stateProvider
     .state('signin', {
       url: "/",
@@ -14,7 +17,8 @@ function MainRouter($stateProvider, $urlRouterProvider) {
     })
     .state('home', {
       url: "/clients",
-      templateUrl: "/html/clientlist.html"
+      templateUrl: "/html/clientlist.html",
+      controller: "mainController as mainCtrl"
     })
     .state('todo', {
       url: "/todo",
