@@ -171,13 +171,14 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
 function loginCtrl(Auth, $location, $rootScope, AuthToken) {
   var lCtrl = this
 
+  lCtrl.loggedIn = Auth.isLoggedIn()
+
   $rootScope.$on('$stateChangeSuccess', function() {
     lCtrl.loggedIn = Auth.isLoggedIn()
     if(lCtrl.loggedIn){
       Auth.getUser()
       .then(function(res) {
         lCtrl.user = res.data
-        // console.log(res.data);
       })
     }else{
       $location.path('/signin')
@@ -190,13 +191,15 @@ function loginCtrl(Auth, $location, $rootScope, AuthToken) {
         // console.log(res.data);
           AuthToken.setToken(res.data.token)
           $location.path('/clients')
+          lCtrl.loginData.email = ''
+          lCtrl.loginData.password = ''
       })
   }
 
   lCtrl.doLogout = function(){
     Auth.logout()
     lCtrl.user = ''
-    $location.path('/clients')
+    $location.path('/signIn')
   }
 }
   //

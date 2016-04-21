@@ -11,7 +11,6 @@
       apiUrl = '/api/v1/stemsApp/todos'
 
     todoData.getAll = function() {
-      console.log('Getting all to-dos')
       return $http.get(apiUrl)
     }
 

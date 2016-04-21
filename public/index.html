@@ -17,7 +17,8 @@
 
 
 <body ng-controller="loginCtrl as lCtrl" class="backgroundImage" class="responsive-img">
-  <!---Navbar --------------------->
+
+  <!---Navbar =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
   <nav  id="navBarColor" class="nav-top">
     <div class="nav-wrapper row">
       <a href="#" class="brand-logo" id="stemsLogo">Stems</a>
@@ -25,24 +26,27 @@
       <ul class="right hide-on-med-and-down">
         <li><a id="navButtons" ui-sref="home">Clients</a></li>
         <li><a id="navButtons" ui-sref="todo">To-Do's</a></li>
-        <!-- <li><a id="navButtons" ui-sref="signin">Sign Out</a></li> -->
+        <li ng-if="lCtrl.loggedIn"><a id="navButtons" ng-click="lCtrl.doLogout()">Log Out</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a ui-sref="home">Clients</a></li>
         <li><a ui-sref="todo">To-Do's</a></li>
-        <!-- <li><a ui-sref="signin">~ Sign Out</a></li> -->
+        <li ng-if="lCtrl.loggedIn"><a ng-click="lCtrl.doLogout()">Log Out</a></li>
       </ul>
     </div>
   </nav>
+  <!---Navbar =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
 
-  <!-- ==================== -->
-  <!-- Menu collapse script -->
-  <!-- ==================== -->
+
+  <!-- Menu collapse script =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
   <script type="text/javascript">
     $(".button-collapse").sideNav({
       closeOnClick: true
     });
   </script>
+  <!-- Menu collapse script =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
+
+
 
   <!-- =============================================== -->
   <!-- ===================UI VIEW===================== -->
