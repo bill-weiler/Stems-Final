@@ -16,8 +16,8 @@
     }
 
     todoData.newToDo = function(todo, client) {
-      console.log('creating new to-do')
-      return $http.post(apiUrl, {description: todo, client: client._id, complete: false})
+      console.log('creating new to-do', client)
+      return $http.post(apiUrl, {description: todo, client: client, complete: false})
     }
 
     todoData.destroy = function(todo) {

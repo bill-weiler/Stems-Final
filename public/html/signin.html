@@ -9,15 +9,12 @@
     <form class="col s12" ng-submit="lCtrl.doLogin()">
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate"ng-model="lCtrl.loginData.email">
-          <label for="first_name">Email</label>
+          <input id="first_name" type="text" placeholder="Email"class="validate white-text"ng-model="lCtrl.loginData.email">
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="password" class="validate" ng-model="lCtrl.loginData.password">
-          <label for="last_name">Password</label>
+          <input id="last_name" type="password" placeholder="Password"class="validate white-text" ng-model="lCtrl.loginData.password">
         </div>
         <button class="btn waves-effect waves-light black-text white" type="submit" name="action">Submit
-          <i class="material-icons right">vpn_key</i>
         </button>
       </div>
     </form>

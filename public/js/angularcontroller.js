@@ -69,6 +69,17 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
       cCtrl.client = res.data
     })
 
+    cCtrl.init = function() {
+      clientFactory.getAll()
+        .then(function(res) {
+          cCtrl.clients = res.data
+        })
+        todoFactory.getAll()
+          .then(function(res) {
+            cCtrl.todos = res.data
+          })
+    }
+
   cCtrl.removeClient = function(id) {
     var x = confirm("Delete this client permanently?")
     if (x == true) {
@@ -110,15 +121,10 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
     }
   }
 
-  todoFactory.getAll()
-    .then(function(res) {
-      cCtrl.todos = res.data
-    })
-
   cCtrl.addTodo = function(todo, client) {
     todoFactory.newToDo(todo, client)
       .then(function(res) {
-        console.log(res);
+        cCtrl.init()
       })
     cCtrl.todo = ''
   }
@@ -171,7 +177,7 @@ function loginCtrl(Auth, $location, $rootScope, AuthToken) {
       Auth.getUser()
       .then(function(res) {
         lCtrl.user = res.data
-        console.log(res.data);
+        // console.log(res.data);
       })
     }else{
       $location.path('/signin')
@@ -181,7 +187,7 @@ function loginCtrl(Auth, $location, $rootScope, AuthToken) {
   lCtrl.doLogin = function() {
     Auth.login(lCtrl.loginData.email, lCtrl.loginData.password)
       .then(function(res) {
-        console.log(res.data);
+        // console.log(res.data);
           AuthToken.setToken(res.data.token)
           $location.path('/clients')
       })

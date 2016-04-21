@@ -21,7 +21,7 @@
     <div class="col s6">
       <i class="material-icons prefix">email</i>
       <h6>Address:</h6>
-      <h6 id="boldText">{{cCtrl.client.address}} {{cCtrl.client.city}}, {{cCtrl.client.state}} {{cCtrl.client.zipCode}}</h6>
+      <h6>{{cCtrl.client.address}} {{cCtrl.client.city}}, {{cCtrl.client.state}} {{cCtrl.client.zipCode}}</h6>
     </div>
     <div class="col s6">
       <i class="material-icons prefix">email</i>
@@ -164,48 +164,40 @@
       <form class="col s12" ng-submit='cCtrl.addGreenSheet()'>
         <div class="row">
           <div class="input-field col s4">
-            <input id="date" type="text" class="validate" ng-model="cCtrl.client.date">
-            <label for="date" placeholder="Date">Date</label>
+            <input id="date" type="text" class="validate" placeholder="Date" ng-model="cCtrl.client.date">
           </div>
           <div class="input-field col s4">
-            <input id="last_name" type="text" class="validate" ng-model="cCtrl.client.dateBegin">
-            <label for="last_name">Begin Time</label>
+            <input id="last_name" type="text" class="validate" placeholder="Begin Time" ng-model="cCtrl.client.dateBegin">
           </div>
           <div class="row">
             <div class="input-field col s4">
-              <input id="disabled" type="text" class="validate" ng-model="cCtrl.client.dateEnd">
-              <label for="disabled">End Time</label>
+              <input id="disabled" type="text" class="validate" placeholder="End Time" ng-model="cCtrl.client.dateEnd">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate" ng-model="cCtrl.client.team">
-            <label for="password">Team</label>
+            <input id="password" type="password" class="validate" placeholder="Team" ng-model="cCtrl.client.team">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate" ng-model="cCtrl.client.walkThroughStart">
-            <label for="first_name">Walk-Through Start</label>
+            <input id="first_name" type="text" class="validate" placeholder="Walk-Through Start" ng-model="cCtrl.client.walkThroughStart">
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate" ng-model="cCtrl.client.walkThroughEnd">
-            <label for="last_name">Walk-Through End</label>
+            <input id="last_name" type="text" class="validate" placeholder="Walk-Through End" ng-model="cCtrl.client.walkThroughEnd">
           </div>
         </div>
         <div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="disabled" type="text" class="validate" ng-model="cCtrl.client.trash">
-              <label for="disabled">Trash Amount</label>
+              <input id="disabled" type="text" class="validate" placeholder="Trash Amount" ng-model="cCtrl.client.trash">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.frontNotes">
-            <label for="email">Front Bed Notes</label>
+            <input id="email" type="text" class="validate" placeholder="Front Bed Notes" ng-model="cCtrl.client.frontNotes">
           </div>
         </div>
         <!-- ================== -->
@@ -225,12 +217,10 @@
             <option value="3">Sweep/Blow</option>
             <option value="3">Look up</option>
           </select>
-          <label>ACTION: Front Bed</label>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.backNotes">
-            <label for="email">Back Bed Notes</label>
+            <input id="email" type="text" class="validate" placeholder="Back Bed Notes" ng-model="cCtrl.client.backNotes">
           </div>
         </div>
         <!-- ================= -->
@@ -250,12 +240,10 @@
             <option value="3">Sweep/Blow</option>
             <option value="3">Look up</option>
           </select>
-          <label>ACTION: Back Bed</label>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.sideNotes">
-            <label for="email">Side Bed Notes</label>
+            <input id="email" type="text" class="validate" placeholder="Side Bed Notes" ng-model="cCtrl.client.sideNotes">
           </div>
         </div>
         <!-- ================= -->
@@ -275,12 +263,10 @@
             <option value="3">Sweep/Blow</option>
             <option value="3">Look up</option>
           </select>
-          <label>ACTION: Side Bed</label>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.annualsNotes">
-            <label for="email">Annuals Notes</label>
+            <input id="email" type="text" class="validate" placeholder="Annuals Notes" ng-model="cCtrl.client.annualsNotes">
           </div>
         </div>
         <!-- ================ -->
@@ -300,12 +286,10 @@
             <option value="3">Sweep/Blow</option>
             <option value="3">Look up</option>
           </select>
-          <label>ACTION: Annuals</label>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.treeNotes">
-            <label for="email">Tree/Shrub Notes</label>
+            <input id="email" type="text" class="validate" placeholder="Tree/Shrub Notes" ng-model="cCtrl.client.treeNotes">
           </div>
         </div>
         <!-- ===================== -->
@@ -329,38 +313,32 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.tripFocus">
-            <label for="email">Focus this trip</label>
+            <input id="email" type="text" class="validate" placeholder="Focus this trip" ng-model="cCtrl.client.tripFocus">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.questions">
-            <label for="email">Client Questions</label>
+            <input id="email" type="text" class="validate" placeholder="Client Questions" ng-model="cCtrl.client.questions">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.specialNote">
-            <label for="email">Special Notes</label>
+            <input id="email" type="text" class="validate" placeholder="Special Notes" ng-model="cCtrl.client.specialNote">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.materials">
-            <label for="email">Materials Used</label>
+            <input id="email" type="text" class="validate" placeholder="Materials Used" ng-model="cCtrl.client.materials">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.irrigation">
-            <label for="email">Sprinkler/Irrigation</label>
+            <input id="email" type="text" class="validate" placeholder="Sprinkler/Irrigation" ng-model="cCtrl.client.irrigation">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" ng-model="cCtrl.client.ideas">
-            <label for="email">"Oh, that would look so much better" ideas!</label>
+            <input id="email" type="text" class="validate" placeholder="'Oh, this would look so much better' ideas!" ng-model="cCtrl.client.ideas">
           </div>
         </div>
         <!-- ======================== -->

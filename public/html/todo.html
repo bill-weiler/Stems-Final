@@ -1,6 +1,6 @@
 <!-- TO-DO UI VIEW -->
 
-<div class="row" id="todoBackgroundContainer">
+<div class="row" id="todoBackgroundContainer" ng-init="cCtrl.init()">
   <div class="col s12">
     <div class="row" id="todoSearchBar">
       <h3 class="white-text">To-Do</h3>
@@ -10,14 +10,14 @@
       <!-- Start to-do modal content  -->
       <!-- ========================= -->
       <div id="modal3" class="modal">
+        <form class="col s12" ng-submit="cCtrl.addTodo(cCtrl.newToDo, cCtrl.client)">
         <div class="modal-content">
           <h4 class="black-text">Add To-Do</h4>
           <div class="row">
-            <form class="col s12" ng-submit='cCtrl.addGreenSheet()'>
+
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="date" type="text" class="validate" ng-model="cCtrl.client.date">
-                  <label for="date" placeholder="Date">Description</label>
+                  <input id="date" type="text" class="validate" placeholder="Description" ng-model="cCtrl.newToDo">
                 </div>
               </div>
               <!-- =============== -->
@@ -25,18 +25,19 @@
               <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
               <!-- =============== -->
               <div class="input-field col s12 browser-default">
-                <select>
-                  <option value="" disabled selected>Client Select</option>
-                  <option value="1" ng-repeat="c in mainCtrl.clients | orderBy : 'lastName'">{{c.firstName}} {{c.lastName}}</option>
+                <select ng-model="cCtrl.client" material-select watch>
+                  <option value="{{c._id}}" ng-repeat="c in cCtrl.clients | orderBy : 'lastName'">{{c.firstName}} {{c.lastName}}</option>
                 </select>
+                <label>Client Select</label>
               </div>
           </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">Submit</a>
+          <input type="submit" value="submit"class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">
         </div>
-        </form>
+      </form>
       </div>
+
       <!-- ======================== -->
       <!-- End to-do modal content  -->
       <!-- ======================== -->

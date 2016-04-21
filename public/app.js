@@ -2,7 +2,7 @@
   'use strict';
 
   //=============Module and dependency injector==============\\
-  angular.module('StemsApp', ['ui.router','myClientFactory','mainControl', 'myTodoFactory', 'authService'])
+  angular.module('StemsApp', ['ui.router','myClientFactory','mainControl', 'myTodoFactory', 'authService', 'ui.materialize'])
   .config(MainRouter)
 
 //=============UI Router==============\\
@@ -24,7 +24,6 @@ function MainRouter($stateProvider, $urlRouterProvider, $httpProvider) {
       url: "/todo",
       templateUrl: "/html/todo.html",
       controller: "clientCtrl as cCtrl"
-
     })
     .state('clientProfile', {
       url: "/clients/:id",
