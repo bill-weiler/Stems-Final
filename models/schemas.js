@@ -39,9 +39,9 @@ var mongoose = require('mongoose'),
 //==================\\
     greenSheetSchema = new Schema({
     client           : {type: mongoose.Schema.Types.ObjectId, ref: 'Client'},
-    date             : Date,
-    dateBegin        : Date,
-    dateEnd          : Date,
+    date             : {type: Date, default: Date.now},
+    beginTime        : Date,
+    endTime          : Date,
     team             : [String],
     walkThroughStart : Date,
     walkThroughEnd   : Date,

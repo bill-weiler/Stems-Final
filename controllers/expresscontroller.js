@@ -43,9 +43,21 @@ module.exports = {
     },
 
     update: function(req, res) {
+      var client = req.body
+
+      console.log("req.body :", req.body);
+      //
+      // client.beginTime = moment(client.someDate).toDate()
+      //
+      // client.greenSheet.forEach(function(e, i, a) {
+
+//use moment to set the date type ojects in my db, for each over the greensheets and then update the client
+
+      // })
+
       db.Client.findOneAndUpdate({
         _id: req.params.id
-      }, req.body, {
+      }, client, {
         new: true
       }, function(err, client) {
         console.log('Express: updating client');

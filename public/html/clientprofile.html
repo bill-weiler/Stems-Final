@@ -3,16 +3,16 @@
 <div class="textStyle">
 </div>
 <div class="row" id="clientProfileBackgroundContainer">
-  <h2 style="margin: 5;"class="white-text">{{cCtrl.client.firstName}} {{cCtrl.client.lastName}}</h2>
+  <h2 class="white-text" style="margin-top: 0;">{{cCtrl.client.firstName}} {{cCtrl.client.lastName}}</h2>
 
   <!-- Green Sheet modal trigger  -->
-  <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal2">Green Sheet +</a>
+  <a style="margin-top: 5px;" class="waves-effect waves-light btn modal-trigger black-text white" href="#modal2">Green Sheet +</a>
 
   <!-- Edit information modal trigger -->
-  <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal3"><i class="material-icons right black-text" id="deleteIcon">info_outline</i>Edit</a>
+  <a style="margin-top: 5px;" class="waves-effect waves-light btn modal-trigger black-text white" href="#modal3"><i class="material-icons right black-text" id="deleteIcon">info_outline</i>Edit</a>
 
   <!-- Delete Button -->
-  <a class="waves-effect waves-light btn black-text white" ng-click="cCtrl.removeClient(id)"><i class="material-icons right black-text" id="deleteIcon">delete</i>Delete</a>
+  <a style="margin-top: 5px;" class="waves-effect waves-light btn black-text white" ng-click="cCtrl.removeClient(id)"><i class="material-icons right black-text" id="deleteIcon">delete</i>Delete</a>
 
   <!-- ========================= -->
   <!-- Page content: Client info -->
@@ -61,7 +61,7 @@
     <form class="col s12" ng-submit="cCtrl.addPropNote(cCtrl.client)">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea white-text" ng-model="cCtrl.client.newPropNote"></textarea>
+          <textarea id="textarea1" class="materialize-textarea white-text" ng-model="cCtrl.newPropNote"></textarea>
           <label for="textarea1">New Property Note</label>
           <button class="btn waves-effect waves-light black-text white" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
@@ -158,54 +158,58 @@
 <!-- Green sheet modal content -->
 <!-- ========================= -->
 <div id="modal2" class="modal">
-  <div class="modal-content">
-    <h4 class="black-text">Green Sheet</h4>
-    <div class="row">
-      <form class="col s12" ng-submit='cCtrl.addGreenSheet()'>
+  <form class="col s12" ng-submit='cCtrl.addGreenSheet(cCtrl.newGreenSheet, cCtrl.client)'>
+    <div class="modal-content">
+      <h4 class="black-text">Green Sheet</h4>
+      <div class="row">
         <div class="row">
-          <div class="input-field col s4">
-            <input id="date" type="text" class="validate" placeholder="Date" ng-model="cCtrl.client.date">
+          <div class="input-field col s6">
+            <p>Today's Date</p>
+            <input type="date" class="datepicker" ng-model="cCtrl.newGreenSheet.date">
           </div>
-          <div class="input-field col s4">
-            <input id="last_name" type="text" class="validate" placeholder="Begin Time" ng-model="cCtrl.client.dateBegin">
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <p>Begin Time</p>
+            <input id="last_name" type="time" class="validate" ng-model="cCtrl.newGreenSheet.beginTime">
           </div>
           <div class="row">
-            <div class="input-field col s4">
-              <input id="disabled" type="text" class="validate" placeholder="End Time" ng-model="cCtrl.client.dateEnd">
+            <div class="input-field col s6">
+              <p>End Time</p>
+              <input id="disabled" type="time" class="validate" ng-model="cCtrl.newGreenSheet.endTime">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate" placeholder="Team" ng-model="cCtrl.client.team">
+            <input id="password" type="text" class="validate" placeholder="Team" ng-model="cCtrl.newGreenSheet.team">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate" placeholder="Walk-Through Start" ng-model="cCtrl.client.walkThroughStart">
+            <p>Walk-Through Start</p>
+            <input id="first_name" type="time" class="validate" ng-model="cCtrl.newGreenSheet.walkThroughStart">
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate" placeholder="Walk-Through End" ng-model="cCtrl.client.walkThroughEnd">
+            <p>Walk-Through End</p>
+            <input id="last_name" type="time" class="validate" ng-model="cCtrl.newGreenSheet.walkThroughEnd">
           </div>
         </div>
         <div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="disabled" type="text" class="validate" placeholder="Trash Amount" ng-model="cCtrl.client.trash">
+              <input id="disabled" type="text" class="validate" placeholder="Trash Amount" ng-model="cCtrl.newGreenSheet.trash">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Front Bed Notes" ng-model="cCtrl.client.frontNotes">
+            <input id="email" type="text" class="validate" placeholder="Front Bed Notes" ng-model="cCtrl.newGreenSheet.frontNotes">
           </div>
         </div>
-        <!-- ================== -->
-        <!-- Front Bed Dropdown -->
-        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ================== -->
+        <!-- Front Bed Dropdown=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <div class="input-field col s12 browser-default">
-          <select multiple ng-model="cCtrl.client.frontOptions">
+          <select multiple ng-model="cCtrl.newGreenSheet.frontOptions" material-select watch>
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Weeded</option>
             <option value="2">Cultivate</option>
@@ -220,15 +224,12 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Back Bed Notes" ng-model="cCtrl.client.backNotes">
+            <input id="email" type="text" class="validate" placeholder="Back Bed Notes" ng-model="cCtrl.newGreenSheet.backNotes">
           </div>
         </div>
-        <!-- ================= -->
-        <!-- Back Bed Dropdown -->
-        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ================= -->
+        <!-- Back Bed Dropdown=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
         <div class="input-field col s12 browser-default">
-          <select multiple ng-model="cCtrl.client.backOptions">
+          <select multiple ng-model="cCtrl.newGreenSheet.backOptions" material-select watch>
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Weeded</option>
             <option value="2">Cultivate</option>
@@ -243,15 +244,12 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Side Bed Notes" ng-model="cCtrl.client.sideNotes">
+            <input id="email" type="text" class="validate" placeholder="Side Bed Notes" ng-model="cCtrl.newGreenSheet.sideNotes">
           </div>
         </div>
-        <!-- ================= -->
-        <!-- Side Bed Dropdown -->
-        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ================= -->
+        <!-- Side Bed Dropdown-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <div class="input-field col s12 browser-default">
-          <select multiple ng-model="cCtrl.client.sideOptions">
+          <select multiple ng-model="cCtrl.newGreenSheet.sideOptions" material-select watch>
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Weeded</option>
             <option value="2">Cultivate</option>
@@ -266,15 +264,12 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Annuals Notes" ng-model="cCtrl.client.annualsNotes">
+            <input id="email" type="text" class="validate" placeholder="Annuals Notes" ng-model="cCtrl.newGreenSheet.annualsNotes">
           </div>
         </div>
-        <!-- ================ -->
-        <!-- Annuals Dropdown -->
-        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ================ -->
+        <!-- Annuals Dropdown-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
         <div class="input-field col s12 browser-default">
-          <select multiple ng-model="cCtrl.client.annualsOptions">
+          <select multiple ng-model="cCtrl.newGreenSheet.annualsOptions" material-select watch>
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Weeded</option>
             <option value="2">Cultivate</option>
@@ -289,15 +284,12 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Tree/Shrub Notes" ng-model="cCtrl.client.treeNotes">
+            <input id="email" type="text" class="validate" placeholder="Tree/Shrub Notes" ng-model="cCtrl.newGreenSheet.treeNotes">
           </div>
         </div>
-        <!-- ===================== -->
-        <!-- Trees/Shrubs Dropdown -->
-        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ===================== -->
+        <!-- Trees/Shrubs Dropdown-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
         <div class="input-field col s12 browser-default">
-          <select multiple ng-model="cCtrl.client.treeOptions">
+          <select multiple ng-model="cCtrl.newGreenSheet.treeOptions" material-select watch>
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Weeded</option>
             <option value="2">Cultivate</option>
@@ -313,51 +305,49 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Focus this trip" ng-model="cCtrl.client.tripFocus">
+            <input id="email" type="text" class="validate" placeholder="Focus this trip" ng-model="cCtrl.newGreenSheet.tripFocus">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Client Questions" ng-model="cCtrl.client.questions">
+            <input id="email" type="text" class="validate" placeholder="Client Questions" ng-model="cCtrl.newGreenSheet.questions">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Special Notes" ng-model="cCtrl.client.specialNote">
+            <input id="email" type="text" class="validate" placeholder="Special Notes" ng-model="cCtrl.newGreenSheet.specialNote">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Materials Used" ng-model="cCtrl.client.materials">
+            <input id="email" type="text" class="validate" placeholder="Materials Used" ng-model="cCtrl.newGreenSheet.materials">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="Sprinkler/Irrigation" ng-model="cCtrl.client.irrigation">
+            <input id="email" type="text" class="validate" placeholder="Sprinkler/Irrigation" ng-model="cCtrl.newGreenSheet.irrigation">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate" placeholder="'Oh, this would look so much better' ideas!" ng-model="cCtrl.client.ideas">
+            <input id="email" type="text" class="validate" placeholder="'Oh, this would look so much better' ideas!" ng-model="cCtrl.newGreenSheet.ideas">
           </div>
         </div>
-        <!-- ======================== -->
-        <!-- Picture worthy Dropdown -->
-        <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-        <!-- ======================== -->
+        <!-- Picture worthy Dropdown-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <div class="input-field col s12 browser-default">
-          <select multiple ng-model="cCtrl.client.pictureWorthy">
+          <select multiple ng-model="cCtrl.newGreenSheet.pictureWorthy" material-select watch>
             <option value="" disabled selected>Choose your option</option>
             <option value="1">Yes</option>
             <option value="2">Not yet</option>
           </select>
           <label>Picture Worthy?</label>
         </div>
+      </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">Submit</a>
-  </div>
+    <div class="modal-footer">
+      <input href="" type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">
+      <a href="" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">Close</a>
+    </div>
   </form>
 </div>
 <!-- ===================== -->

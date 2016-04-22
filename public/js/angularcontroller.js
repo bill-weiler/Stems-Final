@@ -14,9 +14,9 @@ angular.module('mainControl', [])
 function mainController($stateParams, $location, clientFactory) {
   var mainCtrl = this
 
-  //====================\\
-  //Controller Functions\\
-  //====================\\
+  //=============================\\
+  //mainCtrl Controller Functions\\
+  //=============================\\
   mainCtrl.init = function() {
     clientFactory.getAll()
       .then(function(res) {
@@ -38,14 +38,6 @@ function mainController($stateParams, $location, clientFactory) {
       })
   }
 
-  // mainCtrl.removeToDo = function(toDoItem) {
-  //   var x = confirm("Delete this item permanently?");
-  //   if (x == true) {
-  //     mainCtrl.toDosArray.splice(mainCtrl.toDosArray.indexOf(toDoItem), 1)
-  //   }
-  // }
-  //
-
 }
 //==================================================================\\
 //                  END OF MAIN CONTROLLER                          \\
@@ -58,16 +50,22 @@ function mainController($stateParams, $location, clientFactory) {
 //============================================================================\\
 function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory) {
   var cCtrl = this
-  var newPropNote = ''
 
-  //====================\\
-  //Controller Functions\\
-  //====================\\
+  cCtrl.newPropNote = ''
+  cCtrl.newGreenSheet = {}
+
+  //==========================\\
+  //cCtrl Controller Functions\\
+  //==========================\\
 
   clientFactory.getSingleClient($stateParams.id)
     .then(function(res) {
       cCtrl.client = res.data
     })
+
+    cCtrl.logTime = function(){
+      console.log(cCtrl.client.dateBegin)
+    }
 
     cCtrl.init = function() {
       clientFactory.getAll()
@@ -100,14 +98,14 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
 
   cCtrl.addPropNote = function(client) {
     client.propNote = client.propNote || []
-    if (client.newPropNote) {
-      client.propNote.push(client.newPropNote)
+    if (cCtrl.newPropNote) {
+      client.propNote.push(cCtrl.newPropNote)
     }
     clientFactory.update(client._id, client)
       .then(function(res) {
         console.log(res)
       })
-    cCtrl.client.newPropNote = ''
+    cCtrl.newPropNote = ''
   }
 
   cCtrl.removePropNote = function(note, client) {
@@ -143,18 +141,29 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
     }
   }
 
-  cCtrl.addGreenSheet = function(greenSheet) {
-    client.greenSheet = client.greenSheet || []
-    if (client.greenSheet) {
-      client.greenSheet.push(client.greenSheet)
+  cCtrl.addGreenSheet = function(newGreenSheet, client) {
+    client.greenSheet    = client.greenSheet || []
+
+    if (cCtrl.newGreenSheet) {
+      var beginTime        = moment(cCtrl.newGreenSheet.beginTime)
+      var endTime          = moment(cCtrl.newGreenSheet.endTime)
+      var walkThroughStart = moment(cCtrl.newGreenSheet.walkThroughStart)
+      var walkThroughEnd   = moment(cCtrl.newGreenSheet.walkThroughEnd)
+
+      cCtrl.newGreenSheet.beginTime        = moment(cCtrl.newGreenSheet.date).hour(beginTime.hour()).minute(beginTime.minutes()).toDate()
+      cCtrl.newGreenSheet.endTime          = moment(cCtrl.newGreenSheet.date).hour(endTime.hour()).minute(endTime.minutes()).toDate()
+      cCtrl.newGreenSheet.walkThroughStart = moment(cCtrl.newGreenSheet.date).hour(walkThroughStart.hour()).minute(walkThroughStart.minutes()).toDate()
+      cCtrl.newGreenSheet.walkThroughEnd   = moment(cCtrl.newGreenSheet.date).hour(walkThroughEnd.hour()).minute(walkThroughEnd.minutes()).toDate()
+
+      client.greenSheet.push(cCtrl.newGreenSheet)
+      console.log(newGreenSheet);
     }
     clientFactory.update(client._id, client)
       .then(function(res) {
         console.log(res)
       })
-    cCtrl.client.greenSheet = ''
+    cCtrl.greenSheet = ''
   }
-
 
 }
 //==================================================================\\
@@ -166,10 +175,13 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
 //                       ~START Login CONTROLLER~                             \\
 //                                                                            \\
 //============================================================================\\
-// loginCtrl.$inject = ['Auth', '$location', '$rootScope', 'AuthToken']
 
 function loginCtrl(Auth, $location, $rootScope, AuthToken) {
   var lCtrl = this
+
+  //==========================\\
+  //lCtrl Controller Functions\\
+  //==========================\\
 
   lCtrl.loggedIn = Auth.isLoggedIn()
 

@@ -6,9 +6,7 @@
       <h3 class="white-text">To-Do</h3>
       <a class="waves-effect waves-light btn modal-trigger black-text white" href="#modal3">+ To-Do</a>
 
-      <!-- ========================= -->
-      <!-- Start to-do modal content  -->
-      <!-- ========================= -->
+      <!-- Start to-do modal content-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-  -->
       <div id="modal3" class="modal">
         <form class="col s12" ng-submit="cCtrl.addTodo(cCtrl.newToDo, cCtrl.client)">
         <div class="modal-content">
@@ -20,10 +18,7 @@
                   <input id="date" type="text" class="validate" placeholder="Description" ng-model="cCtrl.newToDo">
                 </div>
               </div>
-              <!-- =============== -->
-              <!-- Client Dropdown -->
-              <!-- FOR BACK END: 'material-select watch' for back-end submission and possibly bring in angular materialize file -->
-              <!-- =============== -->
+              <!-- Client Dropdown=-=-=-=-=-=-=-=-=- -->
               <div class="input-field col s12 browser-default">
                 <select ng-model="cCtrl.client" material-select watch>
                   <option value="{{c._id}}" ng-repeat="c in cCtrl.clients | orderBy : 'lastName'">{{c.firstName}} {{c.lastName}}</option>
@@ -38,10 +33,14 @@
       </form>
       </div>
 
-      <!-- ======================== -->
-      <!-- End to-do modal content  -->
-      <!-- ======================== -->
+<!-- ======================== -->
+<!-- End to-do modal content  -->
+<!-- ======================== -->
 
+
+      <!-- =================== -->
+      <!-- To-do page content  -->
+      <!-- =================== -->
       <div class="row" id="todoSearchBar">
         <div class="col s6 white" id="addClientButton">
           <input type="text" placeholder="Search..." ng-model="todoSearch">
