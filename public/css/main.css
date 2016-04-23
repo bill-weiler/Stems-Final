@@ -1,24 +1,37 @@
+html, body {
+    height: 100%;
+  }
 body {
-  /*background-image: url(image/barnimages_pisa_09.jpg);*/
-  /*background-image: url(image/P1000966.JPG);*/
   /*background-image: url(image/IMG6.jpg);*/
+  background-image: url(image/succulents.jpeg);
   left: 0;
   top: 0;
-  width: 100%;
-  height: auto;
+  width: 100vw;
+  height: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Helvetica;
 }
+#signInBackground{
+  background-image: url(image/woodsbridge.jpeg);
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 #addClientButton {
   margin-top: 15px;
+  border-radius: 4px;
 }
 #clientListMargin {
   margin-top: 20px;
 }
 #navButtons {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
+  margin-right: 10px;
 }
 #stemsLogo {
   padding-left: 10px;
@@ -46,19 +59,23 @@ body {
   background-color: rgba(0,0,0,0.75);
   top: 20px;
   position: relative;
+  border-radius: 4px;
 }
 #backgroundContainer {
   background-color: rgba(0,0,0,0.75);
+  border-radius: 4px;
 }
 #welcomeBackgroundContainer {
   background-color: rgba(0,0,0,0.75);
   padding: 5px;
   margin-top: 20px;
+  border-radius: 4px;
 }
 #clientProfileBackgroundContainer {
   background-color: rgba(0,0,0,0.75);
   padding: 10px;
   margin-top: 20px;
+  border-radius: 4px;
 }
 #navBarColor {
   background-color: rgba(0,0,0,0.75);
@@ -79,4 +96,10 @@ body {
   padding: 5px;
   height: auto;
   width: 100%;
+}
+@font-face {
+  /*font-family: 'Leafy';*/
+  src: url('fonts/Leafyfont.ttf') format('woff2'),
+       url('fonts/Leafyfont.ttf') format('woff'),
+       url('fonts/Leafyfont.ttf') format('truetype');
 }

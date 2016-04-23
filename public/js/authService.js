@@ -69,7 +69,7 @@
         }
 
         interceptorFactory.responseError = function(res){
-          if(response.status == 403){
+          if(res.status == 403){
             $location.path('/')
           }
           return $q.reject(res)

@@ -1,5 +1,6 @@
 var db     = require('../models/schemas'),
     jwt    = require('jsonwebtoken'),
+    moment = require('moment'),
     secret = 'this is my secret'
 
 module.exports = {
@@ -44,17 +45,13 @@ module.exports = {
 
     update: function(req, res) {
       var client = req.body
-
-      console.log("req.body :", req.body);
-      //
-      // client.beginTime = moment(client.someDate).toDate()
-      //
-      // client.greenSheet.forEach(function(e, i, a) {
-
-//use moment to set the date type ojects in my db, for each over the greensheets and then update the client
-
+      // client.greenSheet.forEach(function(el) {
+      client.beginTime        = moment(client.beginTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
+      client.endTime          = moment(client.beginTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
+      client.walkThroughStart = moment(client.walkThroughStart).format("dddd, MMMM Do YYYY, h:mm:ss a")
+      client.walkThroughEnd   = moment(client.walkThroughEnd).format("dddd, MMMM Do YYYY, h:mm:ss a")
+      console.log("client :", client)
       // })
-
       db.Client.findOneAndUpdate({
         _id: req.params.id
       }, client, {

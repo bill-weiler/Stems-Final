@@ -9,7 +9,8 @@ var express     = require('express'),
     moment      = require('moment'),
     apiRoutes   = require('./api_routes'),
     port        = process.env.PORT || 8080,
-    databaseURL = "mongodb://localhost:27017/stemsApp"
+    // databaseURL = "mongodb://localhost:27017/stemsApp"
+    databaseURL = "mongodb://b_weiler:happykansasranger@ds013898.mlab.com:13898/stemsapp"
 
     mongoose.connect(databaseURL, function(err){
       if(err) console.log(err)

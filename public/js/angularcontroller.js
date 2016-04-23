@@ -162,7 +162,7 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
       .then(function(res) {
         console.log(res)
       })
-    cCtrl.greenSheet = ''
+    cCtrl.client.greenSheet = ''
   }
 
 }

@@ -24,17 +24,14 @@
     }
 
     clientData.update = function(id, client) {
-      console.log('Angular Factory: updating client information')
       return $http.put(apiUrl + '/' + id, client)
     }
 
     clientData.destroy = function(id) {
-      console.log('Angular Factory: deleting client')
       return $http.delete(apiUrl + '/' + id)
     }
 
     clientData.destroyPropNote = function(id) {
-      console.log('Angular Factory: deleting note')
       return $http.delete(apiUrl + '/' + id)
     }
     return clientData
