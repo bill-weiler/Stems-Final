@@ -2,7 +2,7 @@ html, body {
     height: 100%;
   }
 body{
-  font-family: Roboto;
+  font-family: Lato;
 }
 .loggedInBackground {
   /*background-image: url(image/IMG6.jpg);*/
@@ -31,16 +31,18 @@ body{
   margin-top: 20px;
 }
 #navButtons {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: white;
   margin-right: 10px;
-  font-family: Roboto;
+  font-family: Lato;
 }
 #stemsLogo {
   padding-left: 10px;
-  font-size: 4rem;
+  font-size: 5.2rem;
   color: white;
   font-family: Leafy;
+  font-weight: lighter;
+  margin-top: 5px;
 }
 #deleteIcon {
   margin-left: 10px;
@@ -76,7 +78,7 @@ body{
   border-radius: 4px;
 }
 #clientProfileBackgroundContainer {
-  background-color: rgba(0,0,0,0.75);
+  background-color: rgba(0,0,0,0.80);
   padding: 10px;
   margin-top: 20px;
   border-radius: 4px;
@@ -108,8 +110,14 @@ body{
        url('fonts/Leafyfont.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Roboto';
-  src: url('fonts/Roboto-Thin.ttf') format('woff2'),
-       url('fonts/Roboto-Thin.ttf') format('woff'),
-       url('fonts/Roboto-Thin.ttf') format('truetype');
+  font-family: 'Typo';
+  src: url('fonts/Typo Grotesk Demo.otf') format('woff2'),
+       url('fonts/Typo Grotesk Demo.otf') format('woff'),
+       url('fonts/Typo Grotesk Demo.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Regencie';
+  src: url('fonts/RegencieLight.ttf') format('woff2'),
+       url('fonts/RegencieLight.ttf') format('woff'),
+       url('fonts/RegencieLight.ttf') format('truetype');
 }

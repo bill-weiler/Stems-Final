@@ -17,12 +17,12 @@ function mainController($stateParams, $location, clientFactory) {
   //=============================\\
   //mainCtrl Controller Functions\\
   //=============================\\
-  mainCtrl.init = function() {
+  // mainCtrl.init = function() {
     clientFactory.getAll()
       .then(function(res) {
         mainCtrl.clients = res.data
       })
-  }
+  // }
 
   mainCtrl.createNewClient = function(client) {
     clientFactory.createNewClient(client)
@@ -54,15 +54,34 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
 
   cCtrl.newPropNote = ''
   cCtrl.newGreenSheet = {}
+  cCtrl.clients = ''
 
-  //==========================\\
-  //cCtrl Controller Functions\\
-  //==========================\\
-
+  cCtrl.clientInit = function() {
   clientFactory.getSingleClient($stateParams.id)
     .then(function(res) {
       cCtrl.client = res.data
     })
+  }
+
+cCtrl.clientsInit = function(){
+    clientFactory.getAll()
+      .then(function(res) {
+        cCtrl.clients = res.data
+      })
+    }
+
+  cCtrl.createNewClient = function(client) {
+    clientFactory.createNewClient(client)
+      .then(function(res) {
+        cCtrl.clients.push(res.data)
+      })
+      cCtrl.client = {}
+  }
+  cCtrl.getSingleClient = function(id) {
+
+        console.log('grabbing client data', cCtrl.client);
+        $state.go('clientProfile', {id: id})
+  }
 
     cCtrl.logTime = function(){
       console.log(cCtrl.client.dateBegin)
@@ -84,6 +103,7 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
     if (x == true) {
       clientFactory.destroy($stateParams.id)
         .then(function(res) {
+          cCtrl.clients = res.data
           $state.go('home')
           console.log(res)
         })
@@ -125,7 +145,7 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory)
       .then(function(res) {
         cCtrl.init()
       })
-    cCtrl.todo = ''
+    cCtrl.newToDo = ''
   }
 
   cCtrl.removeToDo = function(todo) {
@@ -201,7 +221,7 @@ function loginCtrl(Auth, $location, $rootScope, AuthToken) {
   lCtrl.doLogin = function() {
     Auth.login(lCtrl.loginData.email, lCtrl.loginData.password)
       .then(function(res) {
-        console.log(res);
+        // console.log(res);
           AuthToken.setToken(res.data.token)
           $location.path('/clients')
           lCtrl.loginData.email = ''

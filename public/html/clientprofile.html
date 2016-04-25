@@ -1,46 +1,50 @@
 <!-- CLIENT PROFILE UI VIEW -->
 
-<div class="textStyle">
+<div class="textStyle" ng-init="cCtrl.clientInit()">
 </div>
 <div class="row" id="clientProfileBackgroundContainer">
   <h3 class="white-text" style="margin-top: 0;">{{cCtrl.client.firstName}} {{cCtrl.client.lastName}}</h3>
 
   <!-- Green Sheet modal trigger  -->
-  <a style="margin-top: 5px;" class="waves-effect waves-light btn modal-trigger black-text white" href="#modal2">Green Sheet +</a>
+  <a style="margin-top: 5px;" class="waves-effect waves-light btn modal-trigger white-text deep-orange accent-3" href="#modal2">Green Sheet +</a>
 
   <!-- Edit information modal trigger -->
-  <a style="margin-top: 5px;" class="waves-effect waves-light btn modal-trigger black-text white" href="#modal3"><i class="material-icons right black-text" id="deleteIcon">info_outline</i>Edit</a>
+  <a style="margin-top: 5px;" class="waves-effect waves-light btn modal-trigger white-text deep-orange accent-3" href="#modal3"><i class="material-icons right white-text" id="deleteIcon">info_outline</i>Edit</a>
 
   <!-- Delete Button -->
-  <a style="margin-top: 5px;" class="waves-effect waves-light btn black-text white" ng-click="cCtrl.removeClient(id)"><i class="material-icons right black-text" id="deleteIcon">delete</i>Delete</a>
+  <a style="margin-top: 5px;" class="waves-effect waves-light btn white-text deep-orange accent-3" ng-click="cCtrl.removeClient(id)"><i class="material-icons right white-text" id="deleteIcon">delete</i>Delete</a>
 
   <!-- ========================= -->
   <!-- Page content: Client info -->
   <!-- ========================= -->
-  <div class="row white-text" id="rowSpacing">
-    <div class="col s6">
-      <i class="material-icons prefix">email</i>
-      <h6>Address:</h6>
-      <h6>{{cCtrl.client.address}} {{cCtrl.client.city}}, {{cCtrl.client.state}} {{cCtrl.client.zipCode}}</h6>
+    <div class="row white-text" id="rowSpacing">
+      <div class="col s6">
+        <i class="material-icons prefix">email</i>
+        <h6>Address:</h6>
+        <h6>{{cCtrl.client.address}} {{cCtrl.client.city}}, {{cCtrl.client.state}} {{cCtrl.client.zipCode}}</h6>
+      </div>
+      <div class="col s6">
+        <i class="material-icons prefix">email</i>
+        <h6>Phone:</h6>
+        <h6>{{cCtrl.client.phoneNumber}}</h6>
+      </div>
     </div>
-    <div class="col s6">
-      <i class="material-icons prefix">email</i>
-      <h6>Phone:</h6>
-      <h6>{{cCtrl.client.phoneNumber}}</h6>
+    <div class="row white-text">
+      <div class="col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <h6>Email:</h6>
+        <h6>{{cCtrl.client.email}}</h6>
+      </div>
+      <div class="col s6">
+        <i class="material-icons prefix">phone</i>
+        <h6>Door Code:</h6>
+        <h6>{{cCtrl.client.doorCode}}</h6>
+      </div>
+      <ng-map center="{{cCtrl.client.address}} {{cCtrl.client.city}} {{cCtrl.client.state}} {{cCtrl.client.zipCode}}">
+        <marker position="{{}}">
+        </marker>
+      </ng-map>
     </div>
-  </div>
-  <div class="row white-text">
-    <div class="col s6">
-      <i class="material-icons prefix">account_circle</i>
-      <h6>Email:</h6>
-      <h6>{{cCtrl.client.email}}</h6>
-    </div>
-    <div class="col s6">
-      <i class="material-icons prefix">phone</i>
-      <h6>Door Code:</h6>
-      <h6>{{cCtrl.client.doorCode}}</h6>
-    </div>
-  </div>
 
   <!-- ================================== -->
   <!-- ========= Property notes ========= -->
@@ -63,7 +67,7 @@
         <div class="input-field col s12">
           <textarea id="textarea1" class="materialize-textarea white-text" ng-model="cCtrl.newPropNote"></textarea>
           <label for="textarea1">New Property Note</label>
-          <button class="btn waves-effect waves-light black-text white" type="submit" name="action">Submit
+          <button class="btn waves-effect waves-light white-text deep-orange accent-3" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
           </button>
         </div>
@@ -80,7 +84,7 @@
         <div class="input-field col s12">
           <textarea id="textarea1" class="materialize-textarea white-text" ng-model="cCtrl.todo"></textarea>
           <label for="textarea1">New To-Do</label>
-          <button class="btn waves-effect waves-light black-text white" type="submit" name="action">Submit
+          <button class="btn waves-effect waves-light white-text deep-orange accent-3" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
           </button>
         </div>
@@ -145,7 +149,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" name="button" class="modal-action modal-close waves-effect waves-green btn-flat black-text white">Submit</button>
+      <button type="submit" name="button" class="modal-action modal-close waves-effect waves-green btn-flat white-text deep-orange accent-3">Submit</button>
     </div>
   </div>
 </form>
@@ -344,8 +348,8 @@
       </div>
     </div>
     <div class="modal-footer">
-      <input href="" type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">
-      <a href="" class=" modal-action modal-close waves-effect waves-green btn-flat black-text white">Close</a>
+      <input href="" type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat white-text deep-orange accent-3">
+      <a href="" style="margin-right: 2px;" class=" modal-action modal-close waves-effect waves-green btn-flat white-text deep-orange accent-3">Close</a>
     </div>
   </form>
 </div>

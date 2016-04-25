@@ -18,7 +18,7 @@ function MainRouter($stateProvider, $urlRouterProvider, $httpProvider) {
     .state('home', {
       url: "/clients",
       templateUrl: "/html/clientlist.html",
-      controller: "mainController as mainCtrl"
+      controller: "clientCtrl as cCtrl"
     })
     .state('todo', {
       url: "/todo",

@@ -67,8 +67,12 @@ module.exports = {
         _id: req.params.id
       }, function(err) {
         if (err) res.json(err)
-        res.json({
-          message: "Express: deleted client!"
+        db.Client.find({},function(er,clients){
+          if(er){
+            res.json(er)
+          }else{
+            res.json(clients)
+          }
         })
       })
     }
