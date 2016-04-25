@@ -146,7 +146,6 @@ module.exports = {
     },
 
     signIn: function(req, res) {
-      console.log('Signing in')
       db.User.findOne({email: req.body.email}, function(err, user) {
         if (err) res.json(err)
           //check if a user exists

@@ -29,6 +29,7 @@ function mainController($stateParams, $location, clientFactory) {
       .then(function(res) {
         mainCtrl.clients.push(res.data)
       })
+      mainCtrl.client = {}
   }
   mainCtrl.getSingleClient = function(id) {
     clientFactory.getSingleClient(id)
@@ -200,7 +201,7 @@ function loginCtrl(Auth, $location, $rootScope, AuthToken) {
   lCtrl.doLogin = function() {
     Auth.login(lCtrl.loginData.email, lCtrl.loginData.password)
       .then(function(res) {
-        // console.log(res.data);
+        console.log(res);
           AuthToken.setToken(res.data.token)
           $location.path('/clients')
           lCtrl.loginData.email = ''

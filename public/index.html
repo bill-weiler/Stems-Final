@@ -9,17 +9,19 @@
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <!-- Local CSS, JQuery, Compiled and minified CSS, Compiled and minified JavaScript -->
   <link rel="stylesheet" href="/css/main.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+  <link rel="icon" type="image/png" href="css/image/houseicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js">
+
 
   </script>
 </head>
 
 
-<body ng-controller="loginCtrl as lCtrl" class="backgroundImage" class="responsive-img">
+<body ng-controller="loginCtrl as lCtrl" class="backgroundImage" ng-class="lCtrl.loggedIn ? 'loggedInBackground' : 'loggedOutBackground'" class="responsive-img">
 
   <!---Navbar =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
   <nav  id="navBarColor" class="nav-top">

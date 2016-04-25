@@ -1,7 +1,10 @@
 html, body {
     height: 100%;
   }
-body {
+body{
+  font-family: Roboto;
+}
+.loggedInBackground {
   /*background-image: url(image/IMG6.jpg);*/
   background-image: url(image/succulents.jpeg);
   left: 0;
@@ -10,9 +13,8 @@ body {
   height: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: Helvetica;
 }
-#signInBackground{
+.loggedOutBackground {
   background-image: url(image/woodsbridge.jpeg);
   left: 0;
   top: 0;
@@ -32,11 +34,13 @@ body {
   font-size: 1.2rem;
   color: white;
   margin-right: 10px;
+  font-family: Roboto;
 }
 #stemsLogo {
   padding-left: 10px;
-  font-size: 5rem;
+  font-size: 4rem;
   color: white;
+  font-family: Leafy;
 }
 #deleteIcon {
   margin-left: 10px;
@@ -98,8 +102,14 @@ body {
   width: 100%;
 }
 @font-face {
-  /*font-family: 'Leafy';*/
+  font-family: 'Leafy';
   src: url('fonts/Leafyfont.ttf') format('woff2'),
        url('fonts/Leafyfont.ttf') format('woff'),
        url('fonts/Leafyfont.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Thin.ttf') format('woff2'),
+       url('fonts/Roboto-Thin.ttf') format('woff'),
+       url('fonts/Roboto-Thin.ttf') format('truetype');
 }
