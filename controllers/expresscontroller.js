@@ -47,17 +47,13 @@ module.exports = {
 
       var tempClient = req.body.client || req.body
       var greenSheet = req.body.greenSheet || ''
-
       var client = new db.Client(tempClient)
+      greenSheet.beginTime        = moment(new Date(greenSheet.beginTime)).format("dddd, MMMM Do YYYY, h:mm:ss a")
+      greenSheet.endTime          = moment(new Date(greenSheet.beginTime)).format("dddd, MMMM Do YYYY, h:mm:ss a")
+      greenSheet.walkThroughStart = moment(new Date(greenSheet.walkThroughStart)).format("dddd, MMMM Do YYYY, h:mm:ss a")
+      greenSheet.walkThroughEnd   = moment(new Date(greenSheet.walkThroughEnd)).format("dddd, MMMM Do YYYY, h:mm:ss a")
+      console.log("client :", client)
       client.sendEmail(greenSheet)
-
-        // client.greenSheet.forEach(function(el) {
-        // client.beginTime        = moment(client.beginTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
-        // client.endTime          = moment(client.beginTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
-        // client.walkThroughStart = moment(client.walkThroughStart).format("dddd, MMMM Do YYYY, h:mm:ss a")
-        // client.walkThroughEnd   = moment(client.walkThroughEnd).format("dddd, MMMM Do YYYY, h:mm:ss a")
-        // console.log("client :", client)
-        // })
 
       db.Client.findOneAndUpdate({
         _id: req.params.id

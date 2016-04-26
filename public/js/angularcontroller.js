@@ -182,7 +182,7 @@ cCtrl.clientsInit = function(){
       .then(function(res) {
         console.log(res)
       })
-      // cCtrl.client.greenSheet = ''
+      cCtrl.client.greenSheet = ''
   }
 
 }
