@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('authService', [])
-      .factory('Auth', Auth)
-      .factory('AuthInterceptor', AuthInterceptor)
-      .factory('AuthToken', AuthToken)
+           .factory('Auth', Auth)
+           .factory('AuthInterceptor', AuthInterceptor)
+           .factory('AuthToken', AuthToken)
 
 // ===================\\
 // Auth token FACTORY \\

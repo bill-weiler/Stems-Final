@@ -59,9 +59,6 @@ function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory,
 
   cCtrl.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6sVD7y43F61htg4axqugThH0LN7yn2q0"
   NgMap.getMap().then(function(map) {
-    console.log(map.getCenter())
-    console.log('markers', map.markers)
-    console.log('shapes', map.shapes)
   })
 
   cCtrl.clientInit = function() {
@@ -204,7 +201,7 @@ cCtrl.clientsInit = function(){
 //                                                                            \\
 //============================================================================\\
 
-function loginCtrl(Auth, $location, $rootScope, AuthToken) {
+function loginCtrl(Auth, $location, $rootScope, AuthToken, toastr) {
   var lCtrl = this
 
   //==========================\\
@@ -228,8 +225,12 @@ function loginCtrl(Auth, $location, $rootScope, AuthToken) {
   lCtrl.doLogin = function() {
     Auth.login(lCtrl.loginData.email, lCtrl.loginData.password)
       .then(function(res) {
-        // console.log(res);
           AuthToken.setToken(res.data.token)
+          if(res.data.success){
+          toastr.success(res.data.message, 'Success!')
+        }else{
+          toastr.error(res.data.message, 'Failure to log in')
+        }
           $location.path('/clients')
           lCtrl.loginData.email = ''
           lCtrl.loginData.password = ''
@@ -237,6 +238,7 @@ function loginCtrl(Auth, $location, $rootScope, AuthToken) {
   }
 
   lCtrl.doLogout = function(){
+    toastr.success('Logged out successfully', 'Goodbye!')
     Auth.logout()
     lCtrl.user = ''
     $location.path('/signIn')

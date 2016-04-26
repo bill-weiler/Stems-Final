@@ -170,16 +170,18 @@ module.exports = {
             // 4 - Send back a success message with the JWT
             res.json({
               success: true,
-              message: 'YOU get a token! YOU get a token! YOU get a token!',
+              message: 'Welcome to Stems',
               token: token
             })
           } else {
             res.json({
+              success: false,
               message: 'Password does not match'
             })
           }
         } else {
           res.json({
+            success: false,
             message: 'User does not exist'
           })
         }

@@ -115,14 +115,28 @@ body{
        url('fonts/Leafyfont.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Typo';
-  src: url('fonts/Typo Grotesk Demo.otf') format('woff2'),
-       url('fonts/Typo Grotesk Demo.otf') format('woff'),
-       url('fonts/Typo Grotesk Demo.otf') format('truetype');
-}
-@font-face {
   font-family: 'Regencie';
   src: url('fonts/RegencieLight.ttf') format('woff2'),
        url('fonts/RegencieLight.ttf') format('woff'),
        url('fonts/RegencieLight.ttf') format('truetype');
+}
+.toast-top-mid {
+    top: 12px;
+    left: 50%;
+    margin-left: -150px;
+}
+@media all and (max-width: 240px) {
+    .toast-top-mid {
+        margin-left: -54px;
+    }
+}
+@media all and (min-width: 241px) and (max-width: 320px) {
+    .toast-top-mid {
+        margin-left: -64px;
+    }
+}
+@media all and (min-width: 321px) and (max-width: 480px) {
+    .toast-top-mid {
+        margin-left: -96px;
+    }
 }
