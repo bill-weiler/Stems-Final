@@ -78,8 +78,7 @@ cCtrl.clientsInit = function(){
       cCtrl.client = {}
   }
   cCtrl.getSingleClient = function(id) {
-
-        console.log('grabbing client data', cCtrl.client);
+        // console.log('grabbing client data', cCtrl.client);
         $state.go('clientProfile', {id: id})
   }
 
@@ -145,7 +144,7 @@ cCtrl.clientsInit = function(){
       .then(function(res) {
         cCtrl.init()
       })
-    cCtrl.newToDo = ''
+    cCtrl.todo = ''
   }
 
   cCtrl.removeToDo = function(todo) {
@@ -176,14 +175,14 @@ cCtrl.clientsInit = function(){
       cCtrl.newGreenSheet.walkThroughStart = moment(cCtrl.newGreenSheet.date).hour(walkThroughStart.hour()).minute(walkThroughStart.minutes()).toDate()
       cCtrl.newGreenSheet.walkThroughEnd   = moment(cCtrl.newGreenSheet.date).hour(walkThroughEnd.hour()).minute(walkThroughEnd.minutes()).toDate()
 
-      client.greenSheet.push(cCtrl.newGreenSheet)
-      console.log(newGreenSheet);
+      cCtrl.client.greenSheet.push(cCtrl.newGreenSheet)
+      console.log(cCtrl.newGreenSheet);
     }
-    clientFactory.update(client._id, client)
+    clientFactory.update(client._id, {client: client, greenSheet: newGreenSheet})
       .then(function(res) {
         console.log(res)
       })
-    cCtrl.client.greenSheet = ''
+      // cCtrl.client.greenSheet = ''
   }
 
 }

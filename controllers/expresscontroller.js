@@ -1,7 +1,7 @@
-var db     = require('../models/schemas'),
-    jwt    = require('jsonwebtoken'),
-    moment = require('moment'),
-    secret = 'this is my secret'
+var db = require('../models/schemas'),
+  jwt = require('jsonwebtoken'),
+  moment = require('moment'),
+  secret = 'this is my secret'
 
 module.exports = {
 
@@ -44,14 +44,21 @@ module.exports = {
     },
 
     update: function(req, res) {
-      var client = req.body
-      // client.greenSheet.forEach(function(el) {
-      client.beginTime        = moment(client.beginTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
-      client.endTime          = moment(client.beginTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
-      client.walkThroughStart = moment(client.walkThroughStart).format("dddd, MMMM Do YYYY, h:mm:ss a")
-      client.walkThroughEnd   = moment(client.walkThroughEnd).format("dddd, MMMM Do YYYY, h:mm:ss a")
-      console.log("client :", client)
-      // })
+
+      var tempClient = req.body.client || req.body
+      var greenSheet = req.body.greenSheet || ''
+
+      var client = new db.Client(tempClient)
+      client.sendEmail(greenSheet)
+
+        // client.greenSheet.forEach(function(el) {
+        // client.beginTime        = moment(client.beginTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
+        // client.endTime          = moment(client.beginTime).format("dddd, MMMM Do YYYY, h:mm:ss a")
+        // client.walkThroughStart = moment(client.walkThroughStart).format("dddd, MMMM Do YYYY, h:mm:ss a")
+        // client.walkThroughEnd   = moment(client.walkThroughEnd).format("dddd, MMMM Do YYYY, h:mm:ss a")
+        // console.log("client :", client)
+        // })
+
       db.Client.findOneAndUpdate({
         _id: req.params.id
       }, client, {
@@ -67,10 +74,10 @@ module.exports = {
         _id: req.params.id
       }, function(err) {
         if (err) res.json(err)
-        db.Client.find({},function(er,clients){
-          if(er){
+        db.Client.find({}, function(er, clients) {
+          if (er) {
             res.json(er)
-          }else{
+          } else {
             res.json(clients)
           }
         })
@@ -138,7 +145,7 @@ module.exports = {
   //==================================================================\\
   userController: {
 
-//get req
+    //get req
 
     create: function(req, res) {
       var user = new db.User(req.body)
@@ -150,29 +157,35 @@ module.exports = {
     },
 
     signIn: function(req, res) {
-      db.User.findOne({email: req.body.email}, function(err, user) {
+      db.User.findOne({
+        email: req.body.email
+      }, function(err, user) {
         if (err) res.json(err)
           //check if a user exists
         if (user) {
           //compare hash password
           if (user.checkPassword(req.body.password)) {
             var token = jwt.sign({
-                   name: user.name,
-                   email: user.email
-                 }, secret, {
-                       expiresInMinutes: 720
-                   });
-               // 4 - Send back a success message with the JWT
-               res.json({
-                   success: true,
-                   message: 'YOU get a token! YOU get a token! YOU get a token!',
-                   token: token
-               })
+              name: user.name,
+              email: user.email
+            }, secret, {
+              expiresInMinutes: 720
+            });
+            // 4 - Send back a success message with the JWT
+            res.json({
+              success: true,
+              message: 'YOU get a token! YOU get a token! YOU get a token!',
+              token: token
+            })
           } else {
-            res.json({message: 'Password does not match'})
+            res.json({
+              message: 'Password does not match'
+            })
           }
         } else {
-          res.json({message: 'User does not exist'})
+          res.json({
+            message: 'User does not exist'
+          })
         }
       })
     }

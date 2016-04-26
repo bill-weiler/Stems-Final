@@ -17,34 +17,33 @@
   <!-- ========================= -->
   <!-- Page content: Client info -->
   <!-- ========================= -->
-    <div class="row white-text" id="rowSpacing">
-      <div class="col s6">
-        <i class="material-icons prefix">email</i>
-        <h6>Address:</h6>
-        <h6>{{cCtrl.client.address}} {{cCtrl.client.city}}, {{cCtrl.client.state}} {{cCtrl.client.zipCode}}</h6>
-      </div>
-      <div class="col s6">
-        <i class="material-icons prefix">email</i>
-        <h6>Phone:</h6>
-        <h6>{{cCtrl.client.phoneNumber}}</h6>
-      </div>
+  <div class="row white-text" id="rowSpacing">
+    <div class="col s6">
+      <i class="material-icons prefix">email</i>
+      <h6>Address:</h6>
+      <h6>{{cCtrl.client.address}} {{cCtrl.client.city}}, {{cCtrl.client.state}} {{cCtrl.client.zipCode}}</h6>
     </div>
-    <div class="row white-text">
-      <div class="col s6">
-        <i class="material-icons prefix">account_circle</i>
-        <h6>Email:</h6>
-        <h6>{{cCtrl.client.email}}</h6>
-      </div>
-      <div class="col s6">
-        <i class="material-icons prefix">phone</i>
-        <h6>Door Code:</h6>
-        <h6>{{cCtrl.client.doorCode}}</h6>
-      </div>
-      <ng-map center="{{cCtrl.client.address}} {{cCtrl.client.city}} {{cCtrl.client.state}} {{cCtrl.client.zipCode}}">
-        <marker position="{{}}">
-        </marker>
-      </ng-map>
+    <div class="col s6">
+      <i class="material-icons prefix">email</i>
+      <h6>Phone:</h6>
+      <h6>{{cCtrl.client.phoneNumber}}</h6>
     </div>
+  </div>
+  <div class="row white-text">
+    <div class="col s6">
+      <i class="material-icons prefix">account_circle</i>
+      <h6>Email:</h6>
+      <h6>{{cCtrl.client.email}}</h6>
+    </div>
+    <div class="col s6">
+      <i class="material-icons prefix">phone</i>
+      <h6>Door Code:</h6>
+      <h6>{{cCtrl.client.doorCode}}</h6>
+    </div>
+    <div map-lazy-load="https://maps.google.com/maps/api/js">
+      <ng-map center="41,-87" zoom="3"></ng-map>
+    </div>
+  </div>
 
   <!-- ================================== -->
   <!-- ========= Property notes ========= -->
