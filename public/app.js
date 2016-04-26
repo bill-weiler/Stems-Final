@@ -2,7 +2,7 @@
   'use strict';
 
   //=============Module and dependency injector==============\\
-  angular.module('StemsApp', ['ui.router','myClientFactory','mainControl', 'myTodoFactory', 'authService', 'ui.materialize'])
+  angular.module('StemsApp', ['ui.router','myClientFactory','mainControl', 'myTodoFactory', 'authService', 'ui.materialize', 'ngMap'])
   .config(MainRouter)
 
 //=============UI Router==============\\

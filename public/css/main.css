@@ -4,13 +4,17 @@ html, body {
 body{
   font-family: Lato;
 }
+#map {
+  height: 200px;
+}
 .loggedInBackground {
   /*background-image: url(image/IMG6.jpg);*/
   background-image: url(image/succulents.jpeg);
+  background-color: black;
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -19,7 +23,7 @@ body{
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -102,6 +106,7 @@ body{
   padding: 5px;
   height: auto;
   width: 100%;
+  margin-top: 95px;
 }
 @font-face {
   font-family: 'Leafy';

@@ -6,6 +6,7 @@ angular.module('mainControl', [])
   .controller('clientCtrl', clientCtrl)
   .controller('loginCtrl', loginCtrl)
 
+
 //============================================================================\\
 //                                                                            \\
 //                       ~START MAIN CONTROLLER~                              \\
@@ -49,12 +50,19 @@ function mainController($stateParams, $location, clientFactory) {
 //                        ~START CLIENT CONTROLLER~                           \\
 //                                                                            \\
 //============================================================================\\
-function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory) {
+function clientCtrl($state, $stateParams, $location, clientFactory, todoFactory, NgMap) {
   var cCtrl = this
 
   cCtrl.newPropNote = ''
   cCtrl.newGreenSheet = {}
   cCtrl.clients = ''
+
+  cCtrl.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6sVD7y43F61htg4axqugThH0LN7yn2q0"
+  NgMap.getMap().then(function(map) {
+    console.log(map.getCenter())
+    console.log('markers', map.markers)
+    console.log('shapes', map.shapes)
+  })
 
   cCtrl.clientInit = function() {
   clientFactory.getSingleClient($stateParams.id)

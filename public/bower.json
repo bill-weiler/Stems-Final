@@ -13,6 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-materialize": "^0.1.4"
+    "angular-materialize": "^0.1.4",
+    "ngmap": "^1.17.3"
   }
 }
